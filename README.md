@@ -2,6 +2,7 @@
 <h4 align="center"> 
 	🚧  Projeto de Banco de Dados I :office: Em construção...  🚧
 </h4>
+<h3>A parte da implementação do banco sera feita em Banco de Dados 2.</h3>
 <p align="center">Um dashboard para visualizar e enviar documentos para serem contabilizados como horas adicionais para os alunos da grade de 2018. Neste projeto, um visualizador gráfico estará presente para mostrar o progresso do aluno.</p>
 
 Tabela de conteúdos
