@@ -1,0 +1,278 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans');
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans');
+
+*{
+	margin: 0px;
+	padding: 0px ;
+	border: 0px;
+}
+
+@font-face{
+	font-family: 'Nunito Sans', sans-serif;
+	src:url('https://fonts.googleapis.com/css?family=Nunito+Sans');
+
+}
+.cover{
+	position: fixed !important;
+}
+/* ROW E ELEMENTOS*/
+.rows{
+	background-image: linear-gradient(to bottom, #4c4fa1, #41438b, #353776, #2b2c62, #20214e);
+	padding: 0px;
+	margin:0px;
+}
+.titulos{
+	margin-left: 20%;
+	margin-right: 20%;
+	border-bottom: 1px solid white;
+	color: white;
+}
+
+/* COMEÇO MENU */
+nav{
+    background: rgba(0, 0, 0, 0.2);
+    padding:0px 20px;
+    transition: 0.6s ease-in-out;
+}
+
+
+nav li a:hover{
+  	background: rgba(0, 0, 0, 0);
+}
+
+#logo{
+	position: relative;
+	height: 100%;
+	width: auto;
+}
+
+.brand-logo{
+	left: 10%;
+	transition: all ease .3s;
+	transform: scale(1);
+}
+
+.brand-logo:hover{
+	left: 10%;
+	transition: all ease .3s;
+	transform: scale(1.2);
+}
+
+.item-menu{
+	transition: all ease .3s;
+	color: white!important;
+}
+
+.item-menu:hover{
+	transform: scale(1.1);
+}
+
+.menu-solido{
+	background-color: #3E4097;
+}
+/* FIM MENU */
+
+/* ABAIXO SERA O SLIDER*/
+
+	.no-color {
+		color: transparent;                      
+		background: transparent !important;				
+		border: none;
+		border-radius: 50%;
+		width: 82px;
+		font-size: 5em;
+		opacity: 0.4;
+		position: absolute;
+		transition: all 0.5s ease-in;
+	}
+
+	#slider-container{
+		position: relative;
+		background-image: linear-gradient(to bottom, #44468d, #6b69a4, #908dbb, #b5b3d2, #dcdbe9);
+		/*background-image: linear-gradient(to bottom, #484b9f, #6e6db2, #9291c5, #b6b6d7, #dcdce9);*/
+		padding-top: 2em !important;
+		padding-bottom: 2em !important;
+		padding-left: 10vw;
+   		padding-right: 10vw;
+	}
+
+	#btn-anterior{
+		top: 50%;
+		margin-top: -41px;
+		left: 16px;
+
+	}
+	#btn-anterior:hover{
+		color: white;                   /* COR DA SETA */
+	}
+	#btn-proximo{
+		top: 50%;
+		margin-top: -41px;
+		right: 16px;
+
+	}
+	#btn-proximo:hover{
+		color: white;                    /* COR DA SETA */
+	}
+	.indicators{
+		bottom: 10px !important;
+	}
+	.carousel-indicators{
+        bottom:0;
+    }
+	.carousel {
+ 		height: 80vh;
+    	width: 80vw;
+    	text-align: center;
+	}
+	.sliderimg{
+		height: 100% !important;
+		width: auto !important;
+	}
+/* FIM DO SLIDER*/
+
+/*Section*/
+ .textos{
+	background-color: #DCDCE9;
+	color:black;
+}
+ .icon_section{
+ 	    color: #774747;
+    font-size: 40px;
+ }
+/*Fim Section */
+
+/* COMEÇO EQUIPE */
+.caixa{
+
+	background-color: rgba(62,64,151, 0.8);
+	/* background-color: #3E4097; 
+	background-image: linear-gradient(#3E4097, #20214e); */
+/*	border: 0.1px solid #3C0553; */
+	margin-left: 20%;
+	margin-right: 20%;
+	text-shadow: 3px 3px 3px #20214e;
+	border-radius: 10px;
+}
+
+#red-equipe{
+	transition: all ease .3s;
+}
+
+.moldura{
+	position: relative;
+	width: 200px;
+	height: 200px;
+	border: 4px solid white;
+	background-color: transparent;
+	border-radius: 50%;
+	transition: all ease .3s;
+}
+
+.moldura:hover{
+	transition: all ease .3s;
+	transform: scale(1.1);
+}
+
+.equipe{
+	background-image: linear-gradient(to top, #484b9f, #6e6db2, #9291c5, #b6b6d7, #dcdce9);
+	color: white;
+	background-color: #3E4097;
+}
+
+.membros{
+	display: inline;
+    float: none;
+}
+
+/* COMEÇO DO RODAPÉ */
+.page-footer{
+	background-color: #20214e !important;
+}
+
+#facebook-logo{
+	transition: all ease .4s;
+}
+
+#facebook-logo:hover{
+	transform: scale(1.2);
+
+}
+
+/* FIM DO RODAPÉ */
+
+/*Sobre Nós*/
+.parallax-container {
+  	min-height: 100vh;
+  	line-height: 0;
+  	height: auto;
+ 	color: rgba(255,255,255,.9);
+}
+
+.parallax-container .section {
+	width: 100%;
+}
+
+/*Fim sobre nós*/
+
+/* CSS PAGINA DE EVENTOS */
+.sub-header{             /* Titulo da Pagina*/
+	text-align: center;
+	font-size: 2.7em;
+}
+
+.container-evento{
+	position: relative;
+	width: 33%;
+	display: inline-block;
+	padding: 10px;
+
+}
+
+.imagens-eventos{
+	width: 100%;
+}
+
+.evento-subtitulo{
+	text-align: center;
+	font-size: 2.0em;
+}
+
+.descricao-evento{
+	
+}
+/* FIM PAGINA DE EVENTOS */
+
+/*INICIO FORMULARIO EMAIL*/
+
+.text-style{
+	color: white;
+	margin-top: -.2em;
+	text-align: center;
+}
+
+.text-area-email{
+	color: white;
+}
+
+.input-email{
+	color: white;
+}
+	
+.input-name{
+	color: white;
+}
+
+.form{
+	position: relative;
+	right: .8em;
+	margin-bottom: .1em;
+}
+
+.flexbox {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;  
+}
+

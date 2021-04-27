@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans');
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans');
+
+*{
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+}
+
+@font-face{
+	font-family: 'Nunito Sans', sans-serif;
+	src:url('https://fonts.googleapis.com/css?family=Nunito+Sans');
+
+}
+
+/* COMEÇO MENU */
+body{
+	background-color: #B0B0CD;
+	color:white;
+}
+nav{
+    background: rgba(0, 0, 0, 0.2);
+    padding:0px 20px;
+    transition: 0.6s ease-in-out;
+}
+
+.cover{
+	position: fixed;
+}
+
+nav li a:hover{
+  	background: rgba(0, 0, 0, 0);
+}
+
+#logo{
+	position: relative;
+	height: 100%;
+	width: auto;
+	transition: all ease .4s;
+}
+
+#logo:hover{
+	transform: scale(1.2);
+}
+
+.brand-logo{
+	left: 10%;
+	transition: all ease .4s;
+}
+
+.conj-texto-imagem img{
+	transition: 0.4s ease-in-out;
+	transform: scale(1);
+}
+
+.conj-texto-imagem:hover img{
+	transition: 0.4s ease-in-out;
+	transform: scale(1.2);
+}
+
+.conj-texto-imagem .txt{
+	transition: all ease .4s;
+	-webkit-animation: voltar 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	animation: voltar 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+
+}
+
+.conj-texto-imagem:hover .txt{
+	-webkit-animation: text-pop-up-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	animation: text-pop-up-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+	
+/*COMEÇO ANIMAÇÃO TEXTO 3D (TALVEZ SEJA REMOVIDA) */
+@-webkit-keyframes text-pop-up-right {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    -webkit-transform-origin: 50% 50%;
+            transform-origin: 50% 50%;
+    text-shadow: none;
+  }
+  100% {
+    -webkit-transform: translateX(50px);
+            transform: translateX(50px);
+    -webkit-transform-origin: 50% 50%;
+            transform-origin: 50% 50%;
+    text-shadow: 0 1px 0 #cccccc, 0 2px 0 #cccccc, 0 3px 0 #cccccc, 0 4px 0 #cccccc, 0 5px 0 #cccccc, 0 6px 0 #cccccc, 0 7px 0 #cccccc, 0 8px 0 #cccccc, 0 9px 0 #cccccc, 0 50px 30px rgba(0, 0, 0, 0.3);
+  }
+}
+
+@-webkit-keyframes voltar {
+  0% {
+    -webkit-transform: translateX(50px);
+            transform: translateX(50px);
+    -webkit-transform-origin: 50% 50%;
+            transform-origin: 50% 50%;
+    text-shadow: 0 1px 0 #cccccc, 0 2px 0 #cccccc, 0 3px 0 #cccccc, 0 4px 0 #cccccc, 0 5px 0 #cccccc, 0 6px 0 #cccccc, 0 7px 0 #cccccc, 0 8px 0 #cccccc, 0 9px 0 #cccccc, 0 50px 30px rgba(0, 0, 0, 0.3);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    -webkit-transform-origin: 50% 50%;
+            transform-origin: 50% 50%;
+    text-shadow: none;
+  }
+}
+/*FIM ANIMAÇÃO TEXTO 3D (TALVEZ SEJA REMOVIDA) */
+
+.item-menu{
+	transition: all ease .3s;
+	color: white!important;
+}
+
+.item-menu:hover{
+	transform: scale(1.1);
+}
+
+.menu-solido{
+	background-color: #3E4097;
+}
+/* FIM MENU */
+
+
+/* COMEÇO DO RODAPÉ */
+.page-footer{
+	background-color: #20214e !important;
+}
+
+#facebook-logo{
+	transition: all ease .4s;
+}
+
+#facebook-logo:hover{
+	transform: scale(1.2);
+
+}
+
+/* FIM DO RODAPÉ */
+
+/*Fim sobre nós*/
+
+/* CSS PAGINA DE EVENTOS */
+.sub-header{             /* Titulo da Pagina*/
+	text-align: center;
+	font-size: 2.7em;
+}
+
+
+.background-images{
+	background-image: linear-gradient(to bottom, #20214e, #42416c, #65648b, #8a89ac, #b0b0cd);
+	margin-bottom: 0px;
+
+}
+.background-descicao{
+	background-image: linear-gradient(to top, #20214e, #42416c, #65648b, #8a89ac, #b0b0cd);
+	margin-bottom: 0px;
+
+}
+#eventos{
+	background-color: #20214E !important;
+}
+.event-images{
+	width: 80%;
+	height: 80%;
+	text-align: center;
+    
+}
+.imgSozinha{
+	width: 50%;
+}
+
+/* FIM PAGINA DE EVENTOS */
