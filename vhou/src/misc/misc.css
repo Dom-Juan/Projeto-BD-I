@@ -1,0 +1,38 @@
+.blur-section {
+  /* Add the blur effect */
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+}
+
+
+.nodisplay {
+  display: none;
+}
+
+.showdisplay {
+  display: block;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, atualmente
+                                  suportado pelo Chrome, Edge, Opera e Firefox */
+}
+
+input:-webkit-autofill {
+  background-color: transparent !important;
+  background-image:none !important;
+  color: #000000 !important;
+}
+
+.nodisplay {
+  display: none;
+}
+
+.showdisplay {
+  display: block;
+}

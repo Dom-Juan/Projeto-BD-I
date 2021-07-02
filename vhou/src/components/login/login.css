@@ -5,7 +5,7 @@ body {
   min-height: 100vh;
   margin: 0;
   padding: 0;
-  background: purple;
+  background: #3F3DA0;
 }
 
 .blur-section {
@@ -42,11 +42,13 @@ input:-webkit-autofill {
 #main {
   height: 100%;
   width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
   background: linear-gradient(to right top, #3b6bb9, #3F3DB9, #3F3DA0);
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
 }
 
 #main .login-title {
