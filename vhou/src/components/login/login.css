@@ -33,12 +33,6 @@ body {
                                   suportado pelo Chrome, Edge, Opera e Firefox */
 }
 
-input:-webkit-autofill {
-  background-color: transparent !important;
-  background-image:none !important;
-  color: #000000 !important;
-}
-
 #main {
   height: 100%;
   width: 100%;
@@ -64,22 +58,6 @@ input:-webkit-autofill {
   margin  : 25px;
   margin-left:90px;
   background: #fafafa;
-}
-
-#main #contain #loginForm {
-
-}
-
-#main #contain #registerForm {
-
-}
-
-#main #contain .login-register-wrapper {
-  
-}
-
-#main #contain .login-register-wrapper .nav-buttons {
-  
 }
 
 #main #contain .login-register-wrapper .nav-buttons #toggleBtn{
@@ -127,7 +105,7 @@ input:-webkit-autofill {
 }
 
 #main #contain .login-register-wrapper form input:focus {
-  background: #b9b8b854;
+  background: #b9b8b854 !important;
   border-color: #3b6bb9;
 }
 
@@ -161,6 +139,28 @@ input:-webkit-autofill {
 
 #main #contain .login-register-wrapper form #btnSubmit:hover  {
   box-shadow: 1.5px 1.5px #a7a7a79d;
+}
+
+#forgot-panel {
+  display:flex;
+  justify-content: center;
+  margin: 5px;
+}
+
+#forgot-panel .forgot-password {
+  color: #000000;
+  letter-spacing: 1px;
+  font-size: 16px;
+  outline: 0;
+  background: transparent !important;
+  border: 0px;
+  cursor: pointer;
+  margin: 15px;
+}
+
+#forgot-panel .forgot-password:hover {
+  color: #a7a7a79d;
+  box-shadow: 1.5px #a7a7a79d;
 }
 
 @media only screen and (max-width: 920px) {
