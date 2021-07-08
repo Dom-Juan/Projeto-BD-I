@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 
 // Import de libs de react
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // Import de Componentes
 import Navbar from '../../components/navbar/navbar';
 import SendDocuments from '../../components/sendDocument/sendDocument';
+import BarChart from '../../components/Bars/barChart';
 import {DocumentsSent, DocumentsApproved, DocumentsPending} from '../../components/documentsArea/documentsArea';
 
 // Import de API
@@ -25,6 +26,7 @@ class Menu extends React.Component {
       showActivitiesApproved:false,
       showPending: false,
     }
+    
   }
 
   showDocuments() {
@@ -67,8 +69,8 @@ class Menu extends React.Component {
                 </div>
               </div>
               <div className="col-md-8 hours">
-                <div>
-                  Horas processadas aqui.
+                <div id="imprime">
+                  <BarChart BarTitles={["Monitoria A", "Secomp", "Monitoria B", "Projeto", "Monitoria C", "Bateria", "Tempo no Cacic","Ajuda assitencial ao governo",]} ActivityName={['A']} data={[6, 5, 8, 1, 6, 5, 4,]}></BarChart>
                 </div>
               </div>
             </div>
