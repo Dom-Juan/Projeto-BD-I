@@ -2,6 +2,7 @@ import React from 'react';
 
 // Import de libs de react.
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.min.js';
 
 // Import de Components.
 import LoginComponent from '../../components/login/login';

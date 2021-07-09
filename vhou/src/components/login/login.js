@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 // Import de libs de react
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.min.js';
 
 // Import de API
 // TODO.

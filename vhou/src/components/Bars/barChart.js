@@ -36,7 +36,7 @@ const BarChart = (props) => {
     <div className="container">
       <button type="button" className="btn" id="btnSubmit" onClick={() => printChart()}>Imprimir</button>
       <div>
-        <Bar data={data} width={null} height={null} options={options} ref={el=> (this.componentRef = el)}/>
+        <Bar data={data} width={null} height={null} options={options}/>
       </div>
     </div>
   );
