@@ -20,7 +20,7 @@ const Navbar = (props) => {
       </div>
       <ul className="navbar-nav">
         <li className="nav-item">
-          <Link type="button" className="nav-link" to={{pathname: "/login"}} replace>Logout</Link>
+          <Link type="button" className="nav-link" to={{pathname: props.pathname}} replace>Logout</Link>
         </li>
       </ul>
     </nav>

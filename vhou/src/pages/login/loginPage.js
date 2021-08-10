@@ -71,7 +71,7 @@ class Login extends Component {
                 <button type="button" className="btn" onClick={this.addRegister} id="toggleBtn">Cadastro</button>
               </div>
               <div className="form-group">
-                <LoginComponent showLogin={this.state.showLogin}></LoginComponent>
+                <LoginComponent showLogin={this.state.showLogin} pathname={"/menu/"}></LoginComponent>
                 <RegisterComponent showCad={this.state.showCad}></RegisterComponent>
                 <ForgotPsdComponent showForgot={this.state.showForgot}></ForgotPsdComponent>
               </div>

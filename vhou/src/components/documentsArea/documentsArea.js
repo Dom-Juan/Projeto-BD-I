@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 // Import de libs de react
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -48,30 +48,101 @@ const vetor_topper = [
 ];
 
 const DocumentsSent = (props) => {
-  const [isCord, setIsCord] = useState(props.isCord == true ? true : false);
+  const [isCord, setIsCord] = useState(props.isCord === true ? true : false);
   return (
     <div id="main-document">
       <div className="container">
         {
           vetor_topper.map((element, index) => (
-            <div id="card" className="card text-center">
-              <h5 className="card-header" style={{background: 'var(--primary)'}}>Atividade Extracurricular</h5>
+            <div className="card-doc card text-center" id="card">
+              <h5 className="card-header noselect" style={{ background: 'var(--primary)' }}>Atividade Extracurricular</h5>
               <div className="card-body">
                 <div className="row">
-                  <div className="col text-center">
+                  <div className="col text-center noselect">
                     {element.data}
                   </div>
-                  <hr/>
+                  <hr />
                 </div>
                 <div className="row">
-                  <p>Informações do Aluno:</p>
+                  <div className="col">
+                    <p className="noselect">Informações do Aluno:</p>
+                    <table className="table">
+                      <thead>
+                        <tr>
+                          <th scope="col noselect">RA</th>
+                          <th scope="col noselect">HORAS COMPLEMENTARES</th>
+                          <th scope="col noselect">TIPO</th>
+                          <th scope="col noselect">ARQUIVO</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">{element.RA}</th>
+                          <td>{element.horas}</td>
+                          <td>{element.tipo}</td>
+                          <td>{element.arq}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                {(isCord) ?
+                  <div className="buttonsEdit">
+                    <div className="container">
+                      <div className="row">
+                        <div className="col btnDoc">
+                          <button type="button" className="btn btnSubmitApprove" id="toggleBtn">Aprovar</button>
+                        </div>
+                        <div className="col btnDoc">
+                          <button type="button" className="btn btnSubmitClose" id="toggleBtn">Reprovar</button>
+                        </div>
+                        <div className="col btnDoc">
+                          <button type="button" className="btn btnSubmit2" id="toggleBtn">Download</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  : ''
+                }
+
+              </div>
+              <div className='card-footer text-muted bg-warning noselect'>
+                <p className="text-center" style={{ color: 'white' }}>{element.status}</p>
+              </div>
+            </div>
+
+          ))
+        }
+      </div>
+    </div>
+  );
+}
+
+const DocumentsApproved = (props) => {
+  const [isCord, setIsCord] = useState(props.isCord === true ? true : false);
+  return (
+    <div id="main-document">
+      <div className="container">
+        {
+          vetor_topper.map((element, index) => (
+            <div className="card-doc card text-center" id="card">
+              <h5 className="card-header noselect" style={{ background: 'var(--primary)' }}>Atividade Extracurricular</h5>
+              <div className="card-body">
+                <div className="row">
+                  <div className="col text-center noselect">
+                    {element.data}
+                  </div>
+                  <hr />
+                </div>
+                <div className="row">
+                  <p className="noselect">Informações do Aluno:</p>
                   <table className="table">
                     <thead>
                       <tr>
-                        <th scope="col">RA</th>
-                        <th scope="col">HORAS COMPLEMENTARES</th>
-                        <th scope="col">TIPO</th>
-                        <th scope="col">ARQUIVO</th>
+                        <th scope="col noselect">RA</th>
+                        <th scope="col noselect">HORAS COMPLEMENTARES</th>
+                        <th scope="col noselect">TIPO</th>
+                        <th scope="col noselect">ARQUIVO</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -80,45 +151,98 @@ const DocumentsSent = (props) => {
                         <td>{element.horas}</td>
                         <td>{element.tipo}</td>
                         <td>{element.arq}</td>
-                      </tr>                    
+                      </tr>
                     </tbody>
                   </table>
                 </div>
-                {(isCord) ? 
-                <div className="buttonsEdit">
-                  <button type="button" className="btn btn-success" id="toggleBtn">Aprovar</button>
-                  <button type="button" className="btn btn-danger" id="toggleBtn">Reprovar</button>
-                  <button type="button" className="btn btn-info" id="toggleBtn">Download Arquivo</button>
-                </div>
-                : ''
+                {(isCord) ?
+                  <div className="buttonsEdit">
+                    <div className="container">
+                      <div className="row">
+                        <div className="col btnDoc">
+                          <button type="button" className="btn btnSubmit2" id="toggleBtn">Download Arquivo</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  : ''
                 }
-                
+
               </div>
-              <div className='card-footer text-muted bg-warning'>
-                <p className="text-center" style={{color: 'white'}}>{element.status}</p>
+              <div className='card-footer text-muted bg-warning noselect'>
+                <p className="text-center" style={{ color: 'white' }}>{element.status}</p>
               </div>
             </div>
+
           ))
         }
       </div>
     </div>
   );
 }
+const DocumentsPending = (props) => {
+  const [isCord, setIsCord] = useState(props.isCord === true ? true : false);
+  return (
+    <div id="main-document">
+      <div className="container">
+        {
+          vetor_topper.map((element, index) => (
+            <div className="card-doc card text-center" id="card">
+              <h5 className="card-header noselect" style={{ background: 'var(--primary)' }}>Atividade Extracurricular</h5>
+              <div className="card-body">
+                <div className="row">
+                  <div className="col text-center noselect">
+                    {element.data}
+                  </div>
+                  <hr />
+                </div>
+                <div className="row">
+                  <p className="noselect">Informações do Aluno:</p>
+                  <table className="table">
+                    <thead>
+                      <tr>
+                        <th scope="col noselect">RA</th>
+                        <th scope="col noselect">HORAS COMPLEMENTARES</th>
+                        <th scope="col noselect">TIPO</th>
+                        <th scope="col noselect">ARQUIVO</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">{element.RA}</th>
+                        <td>{element.horas}</td>
+                        <td>{element.tipo}</td>
+                        <td>{element.arq}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                {(isCord) ?
+                  <div className="buttonsEdit">
+                    <div className="container">
+                      <div className="row">
+                        <div className="col btnDoc">
+                          <button type="button" className="btn btnSubmitApprove" id="toggleBtn">Aprovar</button>
+                        </div>
+                        <div className="col btnDoc">
+                          <button type="button" className="btn btnSubmitClose" id="toggleBtn">Reprovar</button>
+                        </div>
+                        <div className="col btnDoc">
+                          <button type="button" className="btn btnSubmit2" id="toggleBtn">Download Arquivo</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  : ''
+                }
 
-const DocumentsApproved = () => {
-  return (
-    <div id="main-document">
-      <div className="container">
-        b
-      </div>
-    </div>
-  );
-}
-const DocumentsPending = () => {
-  return (
-    <div id="main-document">
-      <div className="container">
-        Atividades extras pendentes.
+              </div>
+              <div className='card-footer text-muted bg-warning noselect'>
+                <p className="text-center" style={{ color: 'white' }}>{element.status}</p>
+              </div>
+            </div>
+          ))
+        }
       </div>
     </div>
   );

@@ -15,6 +15,7 @@ import { DocumentsSent, DocumentsApproved, DocumentsPending } from '../../compon
 // Import de CSS.
 import '../menu/menu.css';
 import '../../components/sendDocument/sendDocument.css';
+import '../../components/documentsArea/documents.css';
 import '../../misc/animations.css';
 import '../../misc/misc.css';
 
@@ -62,10 +63,10 @@ class Menu extends React.Component {
     return (
       <>
         <div id="main-menu">
-          <Navbar />
+          <Navbar pathname={"/admin/"}/>
           <div className="container info">
             <div className="row">
-              <div className="col-md-4 list-menu-options">
+              <div className="col list-menu-options">
                 <div className="list-menu list-group" id="list-tab" role="tablist">
                   <div className="row" style={{margin: '0 1px'}}>
                     <div className='col-lg-6 col-md-8 col-sm-8'>
@@ -80,27 +81,24 @@ class Menu extends React.Component {
                     </div>
                   </div>
                   <input className="form-control" name="inputPesquisar" id="inputPesquisar" type="text" placeholder="Pesquisar.." style={{margin: '0 7px'}} disabled/>
-                  <button className="list-menu-item list-group-item list-group-item-action noselect" id="act-approved" onClick={() => this.showActSent()} href="#list-act-approved" role="tab" aria-controls="atividades extras enviadas aprovadas">Atividades Extras Enviadas</button>
-                  <button className="list-menu-item list-group-item list-group-item-action noselect" id="act-pending" onClick={() => this.showActAproved()} href="#list-act-pending" role="tab" aria-controls="atividades extras aprovadas">Atividades Extras Aprovadas</button>
-                  <button className="list-menu-item list-group-item list-group-item-action noselect" id="cord-contact" onClick={() => this.showPending()} href="#list-cord-pending" role="tab" aria-controls="atividades extras pendentes">Atividades Extras Pendentes</button>
-                </div>
-              </div>
-              <div className="col-md-8 hours">
-                <div id="imprime">
-                  <BarChart BarTitles={["Monitoria A", "Secomp", "Monitoria B", "Projeto", "Monitoria C", "Bateria", "Tempo no Cacic", "Ajuda assitencial ao governo",]} ActivityName={['A']} data={[6, 5, 8, 1, 6, 5, 4,]}></BarChart>
+                  <div className="opt-group">
+                    <button className="list-menu-item list-group-item list-group-item-action noselect" id="act-approved" onClick={() => this.showActSent()} href="#list-act-approved" role="tab" aria-controls="atividades extras enviadas aprovadas">Atividades Extras Recebidas</button>
+                    <button className="list-menu-item list-group-item list-group-item-action noselect" id="act-pending" onClick={() => this.showActAproved()} href="#list-act-pending" role="tab" aria-controls="atividades extras aprovadas">Atividades Extras Aprovadas</button>
+                    <button className="list-menu-item list-group-item list-group-item-action noselect" id="cord-contact" onClick={() => this.showPending()} href="#list-cord-pending" role="tab" aria-controls="atividades extras pendentes">Atividades Extras Pendentes</button>
+                  </div>
                 </div>
               </div>
             </div>
             <div className="row">
-              <div className="col list-menu-content">               
+              <div className="col list-menu-content">              
                 <div className={`${(this.state.showActivitiesSent === false) ? "nodisplay" : "showdisplay"}`}>
                   <DocumentsSent isCord={true}></DocumentsSent>
                 </div>
                 <div className={`${(this.state.showActivitiesApproved === false) ? "nodisplay" : "showdisplay"}`}>
-                  <DocumentsApproved></DocumentsApproved>
+                  <DocumentsApproved isCord={true}></DocumentsApproved>
                 </div>
                 <div className={`${(this.state.showPending === false) ? "nodisplay" : "showdisplay"}`}>
-                  <DocumentsPending></DocumentsPending>
+                  <DocumentsPending isCord={true}></DocumentsPending>
                 </div>
               </div>
             </div>

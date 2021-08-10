@@ -63,6 +63,11 @@ body {
   top: 0;
 }
 
+.opt-group {
+  display: flex;
+  flex-direction: column;
+}
+
 #main-menu #about {
   width: 100%;
   border-style: solid;
@@ -91,5 +96,7 @@ body {
     align-items: center;
     min-height: 100vh;
   }
+
+  
 
 }

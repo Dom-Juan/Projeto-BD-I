@@ -66,11 +66,11 @@ class LoginAdmin extends Component {
           <div id="contain" className="container">
             <div className="login-register-wrapper animadoCimaParaBaixo">
               <div className="form-group">
-                <LoginComponent showLogin={this.state.showLogin}></LoginComponent>
+                <LoginComponent showLogin={this.state.showLogin} pathname={"/menuAdmin/"}></LoginComponent>
                 <ForgotPsdComponent showForgot={this.state.showForgot}></ForgotPsdComponent>
               </div>
               <div id="forgot-panel">
-                <a className="forgot-password text-center noselect" onClick={this.addForgotPsd} href="#forgot">Já possui cadastro e esqueceu a senha ?</a>
+                <a className="forgot-password text-center noselect" onClick={this.addForgotPsd} href="#forgot">Requisitar troca de senha.</a>
                 <div id="text-forgot-panel">
                   <p>
                     {this.state.loginStatus === true

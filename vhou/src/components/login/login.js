@@ -26,7 +26,7 @@ const LoginComponent = (props) => {
         <label htmlFor="floatingInput">Senha</label>
       </div>
       <div className="btn-group">
-        <Link to={{ pathname: "/menu/" }} replace><button type="button" className="btn" id="btnSubmit">Login</button></Link>
+        <Link to={{ pathname: props.pathname }} replace><button type="button" className="btn" id="btnSubmit">Login</button></Link>
       </div>
     </form>
   );

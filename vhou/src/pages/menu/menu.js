@@ -64,7 +64,7 @@ class Menu extends React.Component {
     return (
       <>
         <div id="main-menu">
-          <Navbar />
+          <Navbar pathname={"/login/"}/>
           <div className="container info">
             <div className="row">
               <div className="col-md-4 list-menu-options">
