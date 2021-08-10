@@ -3,7 +3,9 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 // Import dos componentes.
 import Login from "./pages/login/loginPage";
+import LoginAdmin from "./pages/loginAdmin/loginAdmin";
 import Menu from "./pages/menu/menu";
+import MenuAdmin from './pages/menuAdmin/menuAdmin';
 
 // Import da api.
 //import PrivateRoute from './components/auth/privateRoutes';
@@ -27,8 +29,9 @@ export default class Routes extends React.Component {
         <BrowserRouter>
           <Switch>
             <Route exact path="/login" component={Login} />
-            
+            <Route exact path="/admin" component={LoginAdmin} />
             <Route exact path="/menu" component={Menu} />
+            <Route exact path="/menuAdmin" component={MenuAdmin} />
             <Route exact path="/" component={Menu} />
             
             <Route path="*" component={() => <h1>Page not Found</h1>} />

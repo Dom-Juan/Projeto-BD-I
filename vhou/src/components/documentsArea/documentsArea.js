@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 // Import de libs de react
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -47,39 +47,55 @@ const vetor_topper = [
   },
 ];
 
-const DocumentsSent = () => {
+const DocumentsSent = (props) => {
+  const [isCord, setIsCord] = useState(props.isCord == true ? true : false);
   return (
     <div id="main-document">
       <div className="container">
         {
           vetor_topper.map((element, index) => (
-            <div id="card" className="container">
-              <h1 className="text-center">Atividade Extracurricular</h1>
-              <div className="container">
+            <div id="card" className="card text-center">
+              <h5 className="card-header" style={{background: 'var(--primary)'}}>Atividade Extracurricular</h5>
+              <div className="card-body">
                 <div className="row">
                   <div className="col text-center">
                     {element.data}
                   </div>
+                  <hr/>
                 </div>
                 <div className="row">
-                  <div className="col-2">
-                    {element.RA}
-                  </div>
-                  <div className="col-8">
-                    {element.horas}
-                  </div>
+                  <p>Informações do Aluno:</p>
+                  <table className="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">RA</th>
+                        <th scope="col">HORAS COMPLEMENTARES</th>
+                        <th scope="col">TIPO</th>
+                        <th scope="col">ARQUIVO</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">{element.RA}</th>
+                        <td>{element.horas}</td>
+                        <td>{element.tipo}</td>
+                        <td>{element.arq}</td>
+                      </tr>                    
+                    </tbody>
+                  </table>
                 </div>
-                <div className="row">
-                  <div className="col-2">
-                    {element.tipo}
-                  </div>
-                  <div className="col-8">
-                    {element.arq}
-                  </div>
+                {(isCord) ? 
+                <div className="buttonsEdit">
+                  <button type="button" className="btn btn-success" id="toggleBtn">Aprovar</button>
+                  <button type="button" className="btn btn-danger" id="toggleBtn">Reprovar</button>
+                  <button type="button" className="btn btn-info" id="toggleBtn">Download Arquivo</button>
                 </div>
+                : ''
+                }
+                
               </div>
-              <div>
-                <p className="text-center">{element.status}</p>
+              <div className='card-footer text-muted bg-warning'>
+                <p className="text-center" style={{color: 'white'}}>{element.status}</p>
               </div>
             </div>
           ))
