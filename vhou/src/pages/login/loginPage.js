@@ -1,4 +1,4 @@
-import React, {Component, useState } from 'react';
+import React, {Component } from 'react';
 
 // Import de libs de react.
 import 'bootstrap/dist/css/bootstrap.min.css';

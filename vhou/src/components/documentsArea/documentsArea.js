@@ -55,7 +55,7 @@ const DocumentsSent = (props) => {
         {
           vetor_topper.map((element, index) => (
             <div className="card-doc card text-center" id="card">
-              <h5 className="card-header noselect" style={{ background: 'var(--primary)' }}>Atividade Extracurricular</h5>
+              <h5 className="card-header document-bkg noselect" style={{ background: 'var(--primary)' }}>Atividade Extracurricular</h5>
               <div className="card-body">
                 <div className="row">
                   <div className="col text-center noselect">
@@ -126,7 +126,7 @@ const DocumentsApproved = (props) => {
         {
           vetor_topper.map((element, index) => (
             <div className="card-doc card text-center" id="card">
-              <h5 className="card-header noselect" style={{ background: 'var(--primary)' }}>Atividade Extracurricular</h5>
+              <h5 className="card-header document-bkg noselect" style={{ background: 'var(--primary)' }}>Atividade Extracurricular</h5>
               <div className="card-body">
                 <div className="row">
                   <div className="col text-center noselect">
@@ -180,6 +180,7 @@ const DocumentsApproved = (props) => {
     </div>
   );
 }
+
 const DocumentsPending = (props) => {
   const [isCord, setIsCord] = useState(props.isCord === true ? true : false);
   return (
@@ -188,7 +189,7 @@ const DocumentsPending = (props) => {
         {
           vetor_topper.map((element, index) => (
             <div className="card-doc card text-center" id="card">
-              <h5 className="card-header noselect" style={{ background: 'var(--primary)' }}>Atividade Extracurricular</h5>
+              <h5 className="card-header document-bkg noselect" style={{ background: 'var(--primary)' }}>Atividade Extracurricular</h5>
               <div className="card-body">
                 <div className="row">
                   <div className="col text-center noselect">

@@ -15,7 +15,7 @@ import '../../misc/misc.css';
 const Navbar = (props) => {
   return (
     <nav className="navbar navbar-expand-lg nav-menu noselect">
-      <a className="navbar-brand" href="#">Cacic</a>
+      <a className="navbar-brand" href="">Cacic</a>
       <div className="collapse navbar-collapse" id="navbarNavDropdown">
       </div>
       <ul className="navbar-nav">

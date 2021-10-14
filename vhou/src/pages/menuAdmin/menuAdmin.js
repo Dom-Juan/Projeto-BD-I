@@ -6,7 +6,7 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 
 // Import de Componentes
 import Navbar from '../../components/navbar/navbar';
-import BarChart from '../../components/Bars/barChart';
+// import BarChart from '../../components/Bars/barChart';
 import { DocumentsSent, DocumentsApproved, DocumentsPending } from '../../components/documentsArea/documentsArea';
 
 // Import de API
@@ -33,7 +33,7 @@ class Menu extends React.Component {
   allowSearch() {
     var elementos = document.getElementsByName('radioPesquisar');
     elementos.forEach(element => {
-      if(element.checked == true){
+      if(element.checked === true){
         var x = document.getElementById("inputPesquisar");
         x.disabled = false;
         console.log(x);
