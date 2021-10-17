@@ -6,6 +6,7 @@ import Login from "./pages/login/loginPage";
 import LoginAdmin from "./pages/loginAdmin/loginAdmin";
 import Menu from "./pages/menu/menu";
 import MenuAdmin from './pages/menuAdmin/menuAdmin';
+//import FirstTimeLogin from "./pages/firstTimeLogin/firstTimeLogin";
 
 // Import da api.
 //import PrivateRoute from './components/auth/privateRoutes';
@@ -22,6 +23,7 @@ export default class Routes extends React.Component {
 
   //<PrivateRoute exact path="/adm" component={Adm} />
   //<Route exact path="/login/reset" component={Reset} />
+  //<Route exact path="/login/first-time" component={FirstTimeLogin} />
 
   render() {
     return (
@@ -29,6 +31,7 @@ export default class Routes extends React.Component {
         <BrowserRouter>
           <Switch>
             <Route exact path="/login" component={Login} />
+
             <Route exact path="/admin" component={LoginAdmin} />
             <Route exact path="/menu" component={Menu} />
             <Route exact path="/menuAdmin" component={MenuAdmin} />

@@ -48,7 +48,8 @@ const vetor_topper = [
 ];
 
 const DocumentsSent = (props) => {
-  const [isCord, setIsCord] = useState(props.isCord === true ? true : false);
+  const isCord = useState(props.isCord === true ? true : false);
+
   return (
     <div id="main-document">
       <div className="container">
@@ -119,7 +120,8 @@ const DocumentsSent = (props) => {
 }
 
 const DocumentsApproved = (props) => {
-  const [isCord, setIsCord] = useState(props.isCord === true ? true : false);
+  const isCord = useState(props.isCord === true ? true : false);
+
   return (
     <div id="main-document">
       <div className="container">
@@ -182,7 +184,8 @@ const DocumentsApproved = (props) => {
 }
 
 const DocumentsPending = (props) => {
-  const [isCord, setIsCord] = useState(props.isCord === true ? true : false);
+  const [isCord] = useState(props.isCord === true ? true : false);
+
   return (
     <div id="main-document">
       <div className="container">
