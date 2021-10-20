@@ -109,6 +109,29 @@ body {
   border-color: #3b6bb9;
 }
 
+#main .c-input {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  max-width: 400px;
+  min-height: 35px;
+  border-radius: 2.5px;
+  padding: 1.4rem 1.4rem;
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: #414040d3;
+  background: #fafafa;
+  cursor: pointer;
+  -webkit-appearance: menulist;
+  text-align-last: center;
+}
+
+#main .c-input:focus {
+  background: #fafafa !important;
+  border-color: #3b6bb9;
+}
+
 #main #contain .login-register-wrapper form input > label {
   margin: 0 auto;
 }
