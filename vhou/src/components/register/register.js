@@ -20,8 +20,10 @@ const RegisterComponent = (props) => {
   const [info, setInfo] = useState({});
   const [g, setGrad] = useState(["bacharelado", "doutorado", "mestrado"]);
   const [c, setCurso] = useState(["computação", "matemática"]);
+  const [a, setEnt] = useState(["CACIC", "sem entidade"]);
   const [selectedGrad, setSelectedGrad] = useState("");
   const [selectedCurso, setSelectedCurso] = useState("");
+  const [selectedEntidade, setSelectedEntidade] = useState("");
 
   // Troca o calor do graduação conforme o usuário digita.
   const setGraduacaoAluno = (e) => {
@@ -34,6 +36,12 @@ const RegisterComponent = (props) => {
     e.persist(e);
     setSelectedCurso(c[e.target.value]);
   }
+
+  const setEntidadeAluno = (e) => {
+    e.persist(e);
+    setSelectedEntidade(a[e.target.value]);
+  }
+
 
   // Troca as informações do cadastro conforme seus valores e info pegada do usuário.
   const setInformacoes = (e) => {
@@ -50,6 +58,11 @@ const RegisterComponent = (props) => {
     e.preventDefault();
 
     // Info do usuário.
+    if(typeof info.nome_usuario === 'undefined'){
+      alert("Preença as informações antes");
+      return;
+    } 
+
     let id_usuario = nanoid(3);
     let nome_usuario = info.nome_usuario;
     let curso = selectedCurso;
@@ -59,6 +72,7 @@ const RegisterComponent = (props) => {
     // Info do aluno.
     let ra_aluno = info.ra_aluno;
     let nome_aluno = info.nome_aluno;
+    let nome_ent_acad_aluno = selectedEntidade;
     let ano_nascimento_aluno = info.ano_nascimento_aluno;
     let curso_aluno = selectedCurso;
     let tipo_usuario_aluno = "1";
@@ -79,6 +93,7 @@ const RegisterComponent = (props) => {
           senha,
           ra_aluno,
           nome_aluno,
+          nome_ent_acad_aluno,
           ano_nascimento_aluno,
           curso_aluno,
           tipo_usuario_aluno,
@@ -146,6 +161,13 @@ const RegisterComponent = (props) => {
             <option value={undefined}>Escolha seu curso...</option>
             <option value={0}>Computação</option>
             <option value={1}>Matemática</option>
+          </select>
+        </div>
+        <div className="input-group mb-3">
+          <select className="form-select c-input" aria-label="Escolha o seu curso" name="curso_aluno" onChange={setEntidadeAluno}>
+            <option value={undefined}>Escolha sua entidade acadêmica...</option>
+            <option value={0}>CACIC</option>
+            <option value={1}>Sem entidade.</option>
           </select>
         </div>
         <div className="btn-group">

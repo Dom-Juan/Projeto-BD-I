@@ -67,8 +67,8 @@ class Login extends Component {
           <div id="contain" className="container">
             <div className="login-register-wrapper animadoCimaParaBaixo">
               <div className="nav-buttons">
-                <button type="button" className="btn" onClick={this.addLogin} id="toggleBtn">Login</button>
-                <button type="button" className="btn" onClick={this.addRegister} id="toggleBtn">Cadastro</button>
+                <button type="button" className="btn" data-bs-toggle="button" aria-pressed="true" onClick={this.addLogin} id="toggleBtn">Login</button>
+                <button type="button" className="btn" data-bs-toggle="button" aria-pressed="false" onClick={this.addRegister} id="toggleBtn">Cadastro</button>
               </div>
               <div className="form-group">
                 <LoginComponent showLogin={this.state.showLogin} pathname={"/menu/"}></LoginComponent>

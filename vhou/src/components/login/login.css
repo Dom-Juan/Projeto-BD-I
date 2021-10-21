@@ -61,12 +61,20 @@ body {
 }
 
 #main #contain .login-register-wrapper .nav-buttons #toggleBtn{
-  border-radius: 0px;
+  border-radius: 1px;
   margin: 12px;
   outline: 0;
   border-width: 0 0 2px 0px;
   border-color: transparent;
 }
+
+#main #contain .login-register-wrapper .nav-buttons #toggleBtn:active{
+  margin: 12px;
+  outline: 0;
+  border-width: 0 0 2px 0px;
+  border-color: #414040d3;
+}
+
 
 #main #contain .login-register-wrapper .nav-buttons #toggleBtn:hover{
   margin: 12px;
