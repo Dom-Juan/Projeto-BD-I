@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 // Import de libs de react
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -19,27 +19,31 @@ const RegisterComponent = (props) => {
   const [pagina, setPagina] = useState("0");
   const [info, setInfo] = useState({});
   const [g, setGrad] = useState(["bacharelado", "doutorado", "mestrado"]);
-  const [c, setCurso] = useState(["computação", "matemática"]);
-  const [a, setEnt] = useState(["CACIC", "sem entidade"]);
+  const [cursosPegos, setCursosPegos] = useState([]);
+  const [entidadesPegas, setEntidadesPegas] = useState([]);
   const [selectedGrad, setSelectedGrad] = useState("");
   const [selectedCurso, setSelectedCurso] = useState("");
   const [selectedEntidade, setSelectedEntidade] = useState("");
+  const [text, setText] = useState("");
 
   // Troca o calor do graduação conforme o usuário digita.
   const setGraduacaoAluno = (e) => {
     e.persist(e);
     setSelectedGrad(g[e.target.value]);
+    console.log(selectedGrad);
   }
 
   // Troca o calor do curso conforme o usuário digita.
   const setCursoAluno = (e) => {
     e.persist(e);
-    setSelectedCurso(c[e.target.value]);
+    setSelectedCurso(e.target.value);
+    console.log(selectedCurso);
   }
 
   const setEntidadeAluno = (e) => {
     e.persist(e);
-    setSelectedEntidade(a[e.target.value]);
+    setSelectedEntidade(e.target.value);
+    console.log(selectedEntidade);
   }
 
 
@@ -47,21 +51,38 @@ const RegisterComponent = (props) => {
   const setInformacoes = (e) => {
     e.persist(e);
     setInfo(info => ({
-        ...info,
-        [e.target.name]: e.target.value
-      })
+      ...info,
+      [e.target.name]: e.target.value
+    })
     );
   };
+
+  useEffect(() => {
+    getCursos();
+    getEntidades();
+  }, []);
+
+  async function getCursos() {
+    await api.get(`/curso/todos`).then(response => {
+      setCursosPegos(response.data.cursos);
+    });
+  }
+
+  async function getEntidades() {
+    await api.get(`entidade/todas`).then(response => {
+      setEntidadesPegas(response.data.entidades);
+    });
+  }
 
   // Enviar o formulário para o servidor.
   async function HandleSubmit(e) {
     e.preventDefault();
 
     // Info do usuário.
-    if(typeof info.nome_usuario === 'undefined'){
-      alert("Preença as informações antes");
+    if (typeof info.nome_usuario === 'undefined' || typeof selectedCurso === 'undefined' || typeof selectedEntidade === 'undefined') {
+      setText("Preença as informações antes");
       return;
-    } 
+    }
 
     let id_usuario = nanoid(3);
     let nome_usuario = info.nome_usuario;
@@ -159,20 +180,42 @@ const RegisterComponent = (props) => {
         <div className="input-group mb-3">
           <select className="form-select c-input" aria-label="Escolha o seu curso" name="curso_aluno" onChange={setCursoAluno}>
             <option value={undefined}>Escolha seu curso...</option>
-            <option value={0}>Computação</option>
-            <option value={1}>Matemática</option>
+            {
+              cursosPegos.map((element, index) => {
+                return (<option value={element.nome_curso} key={index}>{element.nome_curso}</option>);
+              })
+            }
           </select>
         </div>
         <div className="input-group mb-3">
           <select className="form-select c-input" aria-label="Escolha o seu curso" name="curso_aluno" onChange={setEntidadeAluno}>
             <option value={undefined}>Escolha sua entidade acadêmica...</option>
-            <option value={0}>CACIC</option>
-            <option value={1}>Sem entidade.</option>
+            {
+              entidadesPegas.map((element, index) => {
+                return (<option value={element.nome_ent_acad} key={index}>{element.nome_ent_acad}</option>);
+              })
+            }
           </select>
         </div>
         <div className="btn-group">
           <button type="button" className="btnSubmit2 input-margin" onClick={() => setPagina("0")}>Voltar</button>
-          <button type="submit" className="btnSubmitApprove input-margin" onClick={HandleSubmit}>Registrar-se</button>
+          <button type="submit" className="btnSubmitApprove input-margin" onClick={HandleSubmit} data-bs-toggle="modal" data-bs-target="#msgModal">Registrar-se</button>
+        </div>
+      </div>
+      <div className="modal fade" id="msgModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="exampleModalLabel">CACIC - V.H.O.U.</h5>
+              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div className="modal-body text-center">
+              {text}
+            </div>
+            <div className="modal-footer">
+              <button type="button" className="btn btnSubmitClose" data-bs-dismiss="modal">Fechar</button>
+            </div>
+          </div>
         </div>
       </div>
     </form>

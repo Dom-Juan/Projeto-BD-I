@@ -1,7 +1,9 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { Bar } from 'react-chartjs-2';
 
-import '../../components/login/login.css'
+import '../../components/login/login.css';
+
+// Adicionar useEffect depois para da fetch nos dados ou passar eles por componente.
 
 const printChart = () => {
   window.print();

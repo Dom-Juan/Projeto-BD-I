@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 
 // Import dos componentes.
 import Login from "./pages/login/loginPage";
@@ -9,8 +9,22 @@ import MenuAdmin from './pages/menuAdmin/menuAdmin';
 //import FirstTimeLogin from "./pages/firstTimeLogin/firstTimeLogin";
 
 // Import da api.
-//import PrivateRoute from './components/auth/privateRoutes';
-//import { isAuthenticated } from './auth';
+import { isAuthenticated } from './pages/auth';
+
+const PrivateRoute = ({ component: Component, ...rest }) => (
+  <Route
+    {...rest}
+    render={(props) =>
+      isAuthenticated() ? (
+        <Component {...props} />
+      ) : (
+        <Redirect
+          to={{ pathname: "/login", state: { from: props.location } }}
+        />
+      )
+    }
+  />
+);
 
 export default class Routes extends React.Component {
   constructor(props) {
@@ -31,11 +45,11 @@ export default class Routes extends React.Component {
         <BrowserRouter>
           <Switch>
             <Route exact path="/login" component={Login} />
-
             <Route exact path="/admin" component={LoginAdmin} />
-            <Route exact path="/menu" component={Menu} />
-            <Route exact path="/menuAdmin" component={MenuAdmin} />
-            <Route exact path="/" component={Menu} />
+
+            <PrivateRoute exact path="/menu" component={Menu} />
+            <PrivateRoute exact path="/menuAdmin" component={MenuAdmin} />
+            <PrivateRoute exact path="/" component={Menu} />
             
             <Route path="*" component={() => <h1>Page not Found</h1>} />
           </Switch>

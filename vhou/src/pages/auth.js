@@ -18,6 +18,5 @@ export const loginError = token => {
 }
 
 export const logout = () => {
-	alert("Realizando logout...");
   localStorage.removeItem(TOKEN_KEY);
 };

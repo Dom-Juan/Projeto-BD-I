@@ -15,6 +15,10 @@ body {
   text-transform: uppercase;
 }
 
+.dark-text {
+  color: #000 !important;
+}
+
 .nav-menu a{
   margin: 5px;
   padding: 5px;

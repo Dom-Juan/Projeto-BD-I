@@ -55,7 +55,7 @@ const DocumentsSent = (props) => {
       <div className="container">
         {
           vetor_topper.map((element, index) => (
-            <div className="card-doc card text-center" id="card">
+            <div className="card-doc card text-center" id="card" key={index}>
               <h5 className="card-header document-bkg noselect" style={{ background: 'var(--primary)' }}>Atividade Extracurricular</h5>
               <div className="card-body">
                 <div className="row">
@@ -127,7 +127,7 @@ const DocumentsApproved = (props) => {
       <div className="container">
         {
           vetor_topper.map((element, index) => (
-            <div className="card-doc card text-center" id="card">
+            <div className="card-doc card text-center" id="card" key={index}>
               <h5 className="card-header document-bkg noselect" style={{ background: 'var(--primary)' }}>Atividade Extracurricular</h5>
               <div className="card-body">
                 <div className="row">
@@ -191,7 +191,7 @@ const DocumentsPending = (props) => {
       <div className="container">
         {
           vetor_topper.map((element, index) => (
-            <div className="card-doc card text-center" id="card">
+            <div className="card-doc card text-center" id="card" key={index}>
               <h5 className="card-header document-bkg noselect" style={{ background: 'var(--primary)' }}>Atividade Extracurricular</h5>
               <div className="card-body">
                 <div className="row">
