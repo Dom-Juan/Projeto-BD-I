@@ -122,18 +122,18 @@ const RegisterComponent = (props) => {
         }).then(response => {
           console.log(response);
         });
-        alert("Cadastro realizado");
+        setText("Cadastro realizado!!");
       } catch (error) {
         console.error(error);
       }
     } else {
-      alert("As senhas não são iguais.");
+      setText("As senhas não são iguais.");
     }
   }
 
   // HTML e CSS renderizado.
   return (
-    <form action="" id="registerForm" className={`${(props.showCad === false) ? "nodisplay" : "showdisplay animadoDireitaParaEsquerda"}`}>
+    <form action="" id="registerForm" className={`${(props.showCad === false) ? "nodisplay" : "showdisplay animadoCimaParaBaixo"}`}>
       <h3 className="text-center noselect">Cadastro</h3>
       <div className={`${(pagina === "1") ? "nodisplay" : "showdisplay animadoDireitaParaEsquerda"}`}>
         <div className="input-group mb-3 form-floating">

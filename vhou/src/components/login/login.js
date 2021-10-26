@@ -124,7 +124,7 @@ const LoginComponent = (props) => {
   }
 
   return (
-    <form action="" id="loginForm" className={`${(props.showLogin === false) ? "nodisplay" : "showdisplay animadoDireitaParaEsquerda"}`} onSubmit={HandleSubmit}>
+    <form action="" id="loginForm" className={`${(props.showLogin === false) ? "nodisplay" : "showdisplay animadoCimaParaBaixo"}`} onSubmit={HandleSubmit}>
       <h3 className="text-center noselect">Login</h3>
       <div className="input-group mb-3 form-floating">
         <input type="email" className="form-control" id="floatingInput" placeholder="Email" aria-label="Email" name="email" onChange={setInformacoesForm} />
