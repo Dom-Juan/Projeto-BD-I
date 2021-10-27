@@ -65,7 +65,7 @@ const LoginComponent = (props) => {
             history.push("/menu");
           }
         })
-      } else if(location.pathname === '/admin/') {
+      } else if(location.pathname === '/admin') {
         await api.post("/session", {
           email: email,
           senha: password,
