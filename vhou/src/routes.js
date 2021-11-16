@@ -5,7 +5,13 @@ import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import Login from "./pages/login/loginPage";
 import LoginAdmin from "./pages/loginAdmin/loginAdmin";
 import Menu from "./pages/menu/menu";
+
+// Componentes Admin.
 import MenuAdmin from './pages/menuAdmin/menuAdmin';
+import CadCoord from "./pages/cadCoordenador/cadCoord";
+import CadCurso from "./pages/cadCurso/cadCurso";
+import CadHoras from './pages/cadHoras/cadHoras';
+import CadEntAcad from './pages/cadEntAcad/cadEntAcad';
 //import FirstTimeLogin from "./pages/firstTimeLogin/firstTimeLogin";
 
 // Import da api.
@@ -49,6 +55,10 @@ export default class Routes extends React.Component {
 
             <PrivateRoute exact path="/menu" component={Menu} />
             <PrivateRoute exact path="/menuAdmin" component={MenuAdmin} />
+            <PrivateRoute exact path="/cadastro/coordenadores" component={CadCoord} />
+            <PrivateRoute exact path="/cadastro/curso" component={CadCurso} />
+            <PrivateRoute exact path="/cadastro/entidades-academicas" component={CadEntAcad} />
+            <PrivateRoute exact path="/cadastro/horas-complementares" component={CadHoras} />
             <PrivateRoute exact path="/" component={Menu} />
             
             <Route path="*" component={() => <h1>Page not Found</h1>} />

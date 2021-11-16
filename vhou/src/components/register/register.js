@@ -188,7 +188,7 @@ const RegisterComponent = (props) => {
           </select>
         </div>
         <div className="input-group mb-3">
-          <select className="form-select c-input" aria-label="Escolha o seu curso" name="curso_aluno" onChange={setEntidadeAluno}>
+          <select className="form-select c-input" aria-label="Escolha o seu curso" name="nome_ent_acad_aluno" onChange={setEntidadeAluno}>
             <option value={undefined}>Escolha sua entidade acadêmica...</option>
             {
               entidadesPegas.map((element, index) => {

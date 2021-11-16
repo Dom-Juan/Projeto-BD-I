@@ -9,7 +9,7 @@ body {
 }
 
 .nav-menu {
-  background: linear-gradient(to right top, #3b6bb9, #3F3DB9, #3F3DA0);
+  background: linear-gradient(to right top, #3F3DA0, #3F3DB9, #3F3DA0);
   color: #fafafa !important;
   letter-spacing: 3px;
   text-transform: uppercase;
@@ -33,4 +33,8 @@ body {
   color: #414040d3;
   border-width: 0 0 2px 0px;
   border-color: #414040d3;
+}
+
+.menu-color {
+  color: #fafafa;
 }

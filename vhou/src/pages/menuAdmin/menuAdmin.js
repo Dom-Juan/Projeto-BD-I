@@ -58,12 +58,12 @@ class Menu extends React.Component {
       this.setState({ showActivitiesSent: false, showActivitiesApproved: false, showPending: true }) :
       this.setState({ showActivitiesSent: false, showActivitiesApproved: false, showPending: false });
   }
-
+  
   render() {
     return (
       <>
         <div id="main-menu">
-          <Navbar pathname={"/admin/"}/>
+          <Navbar pathname={"/admin/"} isAdmin={true}/>
           <div className="container info">
             <div className="row">
               <div className="col list-menu-options">
