@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 
 // Import de libs de react
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -12,6 +12,7 @@ import { DocumentsSent, DocumentsApproved, DocumentsPending } from '../../compon
 
 // Import de API
 import api from '../api';
+import { getUser } from '../auth';
 
 // Import de CSS.
 import './menu.css';
@@ -26,7 +27,7 @@ const Menu = () => {
   const [showActivitiesSent, setActSent] = useState(true);
   const [showActivitiesApproved, setActApproved] = useState(false);
   const [showPending, setActPending] = useState(false);
-  const [t, setT] = useState(["Monitoria", "Atividade Extracurricular", "Evento"]); // Tipo da atividade.
+
   const [fileName, setFileName] = useState('Esperando um arquivo a ser enviado...');
 
   // Texto monstrando a resposta para o usuário.
@@ -34,17 +35,46 @@ const Menu = () => {
 
   // Variáveis para o fetch do banco de dados.
   const [cursosPegos, setCursosPegos] = useState([]);
+  const [horasPegas, setHorasPegas] = useState([]);
+  const [documents, setDocument] = useState([]);
+  const [atividades, setAtividades] = useState([]);
+  const [horas, setHoras] = useState([]);
 
   const { file, handleSubmit } = useForm();
 
   useEffect(() => {
     getCursos();
-
+    getHorasComplementares();
+    getDocuments();
   }, []);
 
   async function getCursos() {
     await api.get(`/curso/todos`).then(response => {
       setCursosPegos(response.data.cursos);
+    });
+  }
+
+  async function getHorasComplementares() {
+    await api.get(`/horas/todas`).then(response => {
+      setHorasPegas(response.data.horas_complementares);
+    });
+  }
+
+  async function getDocuments() {
+    await api.get(`/atividade/todas`).then(response => {
+      let arrayDocumentosUsuario = [];
+      let arrayGraficoAtividade = [];
+      let arrayGraficoHora = [];
+      response.data.atividades.forEach(element => {
+        if(String(element.id_aluno_atividade) === String(getUser())){
+          arrayDocumentosUsuario.push(element);
+          arrayGraficoAtividade.push(element.nome_atividade);
+          arrayGraficoHora.push(element.horas_atividade);
+        }
+      });
+      setDocument(arrayDocumentosUsuario);
+      setAtividades(arrayGraficoAtividade);
+      setHoras(arrayGraficoHora);
     });
   }
 
@@ -100,7 +130,7 @@ const Menu = () => {
       console.log(key, value);
       dataParaOBanco[key] = value;
     }
-    console.log(dataParaOBanco);
+    //console.log(dataParaOBanco);
 
     try {
       console.log("Registrando Atividade...");
@@ -115,11 +145,10 @@ const Menu = () => {
     }
 
   }
-
   return (
     <>
       <div id="main-menu">
-        <Navbar pathname={"/login/"} />
+      <Navbar pathname={"/dashboard/"}/>
         <div className="container info">
           <div className="row">
             <div className="col-md-4 list-menu-options">
@@ -132,7 +161,7 @@ const Menu = () => {
             </div>
             <div className="col-md-8 hours">
               <div id="imprime">
-                <BarChart BarTitles={["Monitoria A", "Secomp", "Monitoria B", "Projeto", "Monitoria C", "Bateria", "Tempo no Cacic", "Ajuda assitencial ao governo",]} ActivityName={['A']} data={[6, 5, 8, 1, 6, 5, 4,]}></BarChart>
+                <BarChart BarTitles={atividades} ActivityName={['A']} data={horas}></BarChart>
               </div>
             </div>
           </div>
@@ -185,8 +214,8 @@ const Menu = () => {
                             <select className="form-select" id="autoSizingSelect" name="tipo_atividade">
                             <option value={undefined}>Escolha a sua atividade...</option>
                               {
-                                t.map((element, index) => {
-                                  return (<option value={element} key={index}>{element}</option>);
+                                horasPegas.map((element, index) => {
+                                  return (<option value={element.id_hora} key={index}>{element.nome_hora}</option>);
                                 })
                               }
                             </select>
@@ -215,13 +244,13 @@ const Menu = () => {
                 </div>
               </div>
               <div className={`${(showActivitiesSent === false) ? "nodisplay" : "showdisplay"}`}>
-                <DocumentsSent></DocumentsSent>
+                <DocumentsSent id_usuario={getUser()} vetor={documents} isCord={false}></DocumentsSent>
               </div>
               <div className={`${(showActivitiesApproved === false) ? "nodisplay" : "showdisplay"}`}>
-                <DocumentsApproved></DocumentsApproved>
+                <DocumentsApproved id_usuario={getUser()} vetor={documents} isCord={false}></DocumentsApproved>
               </div>
               <div className={`${(showPending === false) ? "nodisplay" : "showdisplay"}`}>
-                <DocumentsPending></DocumentsPending>
+                <DocumentsPending id_usuario={getUser()} vetor={documents} isCord={false}></DocumentsPending>
               </div>
             </div>
           </div>

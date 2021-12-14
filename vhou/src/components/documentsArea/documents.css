@@ -23,6 +23,7 @@ body {
 .document-bkg {
   color: #fafafa;
   background: #3F3DA0;
+  margin: 0;
 }
 
 @media only screen and (max-width: 920px) {

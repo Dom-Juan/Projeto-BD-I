@@ -33,7 +33,7 @@ body {
                                   suportado pelo Chrome, Edge, Opera e Firefox */
 }
 
-#main {
+#main-login {
   height: 100%;
   width: 100%;
   min-height: 100vh;
@@ -45,22 +45,23 @@ body {
   align-items: center;
 }
 
-#main .login-title {
+#main-login .login-title {
   color: #fafafa;
   text-align: center;
   margin: 10px;
   padding: 5px;
 }
 
-#main #contain {
+#main-login #contain {
   border-radius: 4px;
   max-width: 30vw;
   margin  : 25px;
   margin-left:90px;
+  padding: 5px;
   background: #fafafa;
 }
 
-#main #contain .login-register-wrapper .nav-buttons #toggleBtn{
+#main-login #contain .login-register-wrapper .nav-buttons #toggleBtn{
   border-radius: 1px;
   margin: 12px;
   outline: 0;
@@ -68,7 +69,7 @@ body {
   border-color: transparent;
 }
 
-#main #contain .login-register-wrapper .nav-buttons #toggleBtn:active{
+#main-login #contain .login-register-wrapper .nav-buttons #toggleBtn:active{
   margin: 12px;
   outline: 0;
   border-width: 0 0 2px 0px;
@@ -76,7 +77,7 @@ body {
 }
 
 
-#main #contain .login-register-wrapper .nav-buttons #toggleBtn:hover{
+#main-login #contain .login-register-wrapper .nav-buttons #toggleBtn:hover{
   margin: 12px;
   outline: 0;
   border-width: 0 0 2px 0px;
@@ -93,16 +94,16 @@ body {
   border-color: transparent;
 }
 
-#main #contain .login-register-wrapper form {
+#main-login #contain .login-register-wrapper form {
 
 }
 
-#main #contain .login-register-wrapper form input {
+#main-login #contain .login-register-wrapper form input {
   position: relative;
   display: flex;
   flex-direction: row;
   width: 100%;
-  max-width: 400px;
+  min-width: 400px;
   min-height: 35px;
   border-radius: 2.5px;
   padding: 1.4rem 1.4rem;
@@ -112,12 +113,12 @@ body {
   background: #fafafa;
 }
 
-#main #contain .login-register-wrapper form input:focus {
+#main-login #contain .login-register-wrapper form input:focus {
   background: #b9b8b854 !important;
   border-color: #3b6bb9;
 }
 
-#main .c-input {
+#main-login .c-input {
   position: relative;
   display: flex;
   flex-direction: row;
@@ -135,22 +136,22 @@ body {
   text-align-last: center;
 }
 
-#main .c-input:focus {
+#main-login .c-input:focus {
   background: #fafafa !important;
   border-color: #3b6bb9;
 }
 
-#main #contain .login-register-wrapper form input > label {
+#main-login #contain .login-register-wrapper form input > label {
   margin: 0 auto;
 }
 
-#main #contain .login-register-wrapper form .btn-group  {
+#main-login #contain .login-register-wrapper form .btn-group  {
   margin: 25px;
   display: flex;
   justify-content: center;
 }
 
-#main #contain .login-register-wrapper form .btn-group #btnSubmit  {
+#main-login #contain .login-register-wrapper form .btn-group #btnSubmit  {
   width: 125px;
   min-width: 88px;
   font-size: 16px;
@@ -168,7 +169,7 @@ body {
   padding: 5px;
 }
 
-#main #contain .login-register-wrapper form #btnSubmit:hover  {
+#main-login #contain .login-register-wrapper form #btnSubmit:hover  {
   box-shadow: 1.5px 1.5px #a7a7a79d;
 }
 
@@ -195,7 +196,7 @@ body {
 }
 
 @media only screen and (max-width: 920px) {
-  #main {
+  #main-login {
     height: 100%;
     width: 100%;
     background: linear-gradient(to right top, #3b6bb9, #3F3DB9, #3F3DA0);
@@ -205,7 +206,7 @@ body {
     min-height: 100vh;
   }
 
-  #main #contain {
+  #main-login #contain {
     border-radius: 4px;
     max-width: 30vw;
     max-width: fit-content;

@@ -9,8 +9,9 @@ export const getToken = () => localStorage.getItem(TOKEN_KEY);
 export const getUser = () => localStorage.getItem(USER_ID);
 
 // Métodos de Login.
-export const login = token => {
+export const login = (token, user)=> {
 	localStorage.setItem(TOKEN_KEY,token);
+  localStorage.setItem(USER_ID, user.id_usuario);
 };
 
 export const loginError = token => {

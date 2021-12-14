@@ -5,47 +5,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
 
 // Import de API
-// TODO.
+//import api from '../../pages/api';
 
 // Import de CSS.
 import './documents.css';
 import '../../misc/animations.css';
 import '../../misc/misc.css';
-
-const vetor_topper = [
-  {
-    data: "data a",
-    RA: "2",
-    horas: "2",
-    tipo: "tipo a",
-    arq: "arquivo a",
-    status: "status pendente",
-  },
-  {
-    data: "data b",
-    RA: "3",
-    horas: "3",
-    tipo: "tipo b",
-    arq: "arquivo b",
-    status: "status pendente",
-  },
-  {
-    data: "data d",
-    RA: "4",
-    horas: "4",
-    tipo: "arquivo d",
-    arq: "arquivo d",
-    status: "status pendente",
-  },
-  {
-    data: "data c",
-    RA: "5",
-    horas: "5",
-    tipo: "tipo c",
-    arq: "arquiov c",
-    status: "status pendente",
-  },
-];
 
 const DocumentsSent = (props) => {
   const isCord = useState(props.isCord === true ? true : false);
@@ -54,40 +19,44 @@ const DocumentsSent = (props) => {
     <div id="main-document">
       <div className="container">
         {
-          vetor_topper.map((element, index) => (
+          props.vetor.map((element, index) => (
             <div className="card-doc card text-center" id="card" key={index}>
-              <h5 className="card-header document-bkg noselect" style={{ background: 'var(--primary)' }}>Atividade Extracurricular</h5>
+              <h3 className="card-header document-bkg noselect" style={{ background: 'var(--primary)' }}>Atividade Extracurricular</h3>
               <div className="card-body">
                 <div className="row">
                   <div className="col text-center noselect">
-                    {element.data}
+                    {element.nome_atividade}
                   </div>
                   <hr />
                 </div>
                 <div className="row">
                   <div className="col">
-                    <p className="noselect">Informações do Aluno:</p>
+                    <h3><p className="noselect">Informações do Aluno:</p></h3>
                     <table className="table">
                       <thead>
                         <tr>
                           <th scope="col noselect">RA</th>
                           <th scope="col noselect">HORAS COMPLEMENTARES</th>
                           <th scope="col noselect">TIPO</th>
+                          <th scope="col noselect">DATA DE INÍCIO</th>
+                          <th scope="col noselect">DATA DE FIM</th>
                           <th scope="col noselect">ARQUIVO</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <th scope="row">{element.RA}</th>
-                          <td>{element.horas}</td>
-                          <td>{element.tipo}</td>
-                          <td>{element.arq}</td>
+                          <th scope="row">{element.ra_aluno_atividade}</th>
+                          <td>{element.horas_atividade}</td>
+                          <td>{element.tipo_atividade}</td>
+                          <td>{element.data_ini_atividade}</td>
+                          <td>{element.data_fim_atividade}</td>
+                          <td>{element.url_atividade}</td>
                         </tr>
                       </tbody>
                     </table>
                   </div>
                 </div>
-                {(isCord) ?
+                {(isCord[0]) ?
                   <div className="buttonsEdit">
                     <div className="container">
                       <div className="row">
@@ -108,7 +77,7 @@ const DocumentsSent = (props) => {
 
               </div>
               <div className='card-footer text-muted bg-warning noselect'>
-                <p className="text-center" style={{ color: 'white' }}>{element.status}</p>
+                <p className="text-center" style={{ color: 'white' }}>{element.status_atividade}</p>
               </div>
             </div>
 
@@ -125,39 +94,45 @@ const DocumentsApproved = (props) => {
   return (
     <div id="main-document">
       <div className="container">
-        {
-          vetor_topper.map((element, index) => (
+      {
+          props.vetor.map((element, index) => (
             <div className="card-doc card text-center" id="card" key={index}>
-              <h5 className="card-header document-bkg noselect" style={{ background: 'var(--primary)' }}>Atividade Extracurricular</h5>
+              <h3 className="card-header document-bkg noselect" style={{ background: 'var(--primary)' }}>Atividade Extracurricular</h3>
               <div className="card-body">
                 <div className="row">
                   <div className="col text-center noselect">
-                    {element.data}
+                    {element.nome_atividade}
                   </div>
                   <hr />
                 </div>
                 <div className="row">
-                  <p className="noselect">Informações do Aluno:</p>
-                  <table className="table">
-                    <thead>
-                      <tr>
-                        <th scope="col noselect">RA</th>
-                        <th scope="col noselect">HORAS COMPLEMENTARES</th>
-                        <th scope="col noselect">TIPO</th>
-                        <th scope="col noselect">ARQUIVO</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row">{element.RA}</th>
-                        <td>{element.horas}</td>
-                        <td>{element.tipo}</td>
-                        <td>{element.arq}</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                  <div className="col">
+                    <h3><p className="noselect">Informações do Aluno:</p></h3>
+                    <table className="table">
+                      <thead>
+                        <tr>
+                          <th scope="col noselect">RA</th>
+                          <th scope="col noselect">HORAS COMPLEMENTARES</th>
+                          <th scope="col noselect">TIPO</th>
+                          <th scope="col noselect">DATA DE INÍCIO</th>
+                          <th scope="col noselect">DATA DE FIM</th>
+                          <th scope="col noselect">ARQUIVO</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">{element.ra_aluno_atividade}</th>
+                          <td>{element.horas_atividade}</td>
+                          <td>{element.tipo_atividade}</td>
+                          <td>{element.data_ini_atividade}</td>
+                          <td>{element.data_fim_atividade}</td>
+                          <td>{element.url_atividade}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
-                {(isCord) ?
+                {(isCord[0]) ?
                   <div className="buttonsEdit">
                     <div className="container">
                       <div className="row">
@@ -172,7 +147,7 @@ const DocumentsApproved = (props) => {
 
               </div>
               <div className='card-footer text-muted bg-warning noselect'>
-                <p className="text-center" style={{ color: 'white' }}>{element.status}</p>
+                <p className="text-center" style={{ color: 'white' }}>{element.status_atividade}</p>
               </div>
             </div>
 
@@ -189,39 +164,45 @@ const DocumentsPending = (props) => {
   return (
     <div id="main-document">
       <div className="container">
-        {
-          vetor_topper.map((element, index) => (
+      {
+          props.vetor.map((element, index) => (
             <div className="card-doc card text-center" id="card" key={index}>
-              <h5 className="card-header document-bkg noselect" style={{ background: 'var(--primary)' }}>Atividade Extracurricular</h5>
+              <h3 className="card-header document-bkg noselect" style={{ background: 'var(--primary)' }}>Atividade Extracurricular</h3>
               <div className="card-body">
                 <div className="row">
                   <div className="col text-center noselect">
-                    {element.data}
+                    {element.nome_atividade}
                   </div>
                   <hr />
                 </div>
                 <div className="row">
-                  <p className="noselect">Informações do Aluno:</p>
-                  <table className="table">
-                    <thead>
-                      <tr>
-                        <th scope="col noselect">RA</th>
-                        <th scope="col noselect">HORAS COMPLEMENTARES</th>
-                        <th scope="col noselect">TIPO</th>
-                        <th scope="col noselect">ARQUIVO</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row">{element.RA}</th>
-                        <td>{element.horas}</td>
-                        <td>{element.tipo}</td>
-                        <td>{element.arq}</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                  <div className="col">
+                    <h3><p className="noselect">Informações do Aluno:</p></h3>
+                    <table className="table">
+                      <thead>
+                        <tr>
+                          <th scope="col noselect">RA</th>
+                          <th scope="col noselect">HORAS COMPLEMENTARES</th>
+                          <th scope="col noselect">TIPO</th>
+                          <th scope="col noselect">DATA DE INÍCIO</th>
+                          <th scope="col noselect">DATA DE FIM</th>
+                          <th scope="col noselect">ARQUIVO</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">{element.ra_aluno_atividade}</th>
+                          <td>{element.horas_atividade}</td>
+                          <td>{element.tipo_atividade}</td>
+                          <td>{element.data_ini_atividade}</td>
+                          <td>{element.data_fim_atividade}</td>
+                          <td>{element.url_atividade}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
-                {(isCord) ?
+                {(isCord[0]) ?
                   <div className="buttonsEdit">
                     <div className="container">
                       <div className="row">
@@ -242,7 +223,7 @@ const DocumentsPending = (props) => {
 
               </div>
               <div className='card-footer text-muted bg-warning noselect'>
-                <p className="text-center" style={{ color: 'white' }}>{element.status}</p>
+                <p className="text-center" style={{ color: 'white' }}>{element.status_atividade}</p>
               </div>
             </div>
           ))

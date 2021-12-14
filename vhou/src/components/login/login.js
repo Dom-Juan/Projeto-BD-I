@@ -52,7 +52,7 @@ const LoginComponent = (props) => {
         return;
       }
       
-      if(location.pathname === '/login' || location.pathname === '/') {
+      if(location.pathname === '/login' || location.pathname === '/' || location.pathname === '/login/') {
         await api.post("/session", {
           email: email,
           senha: password,
@@ -61,7 +61,7 @@ const LoginComponent = (props) => {
           console.log(response.status, response.statusText);
           setLoginStatus(true);
           if (response.status === 200) {
-            login(response.data.token);
+            login(response.data.token, response.data.user);
             history.push("/menu");
           }
         })
@@ -74,7 +74,7 @@ const LoginComponent = (props) => {
           console.log(response.status, response.statusText);
           setLoginStatus(true);
           if (response.status === 200) {
-            login(response.data.token);
+            login(response.data.token, response.data.user);
             history.push("/menuAdmin");
           }
         })
@@ -85,12 +85,13 @@ const LoginComponent = (props) => {
       console.error(error);
       setLoginStatus(false);
       loginError(null);
+      console.log(error.response);
       if (error.response.status === 400) {
         setLoginStatus(false);
         setErro("Erro de request no sistema, digitou os dados corretos ?");
       } else if (error.response.status === 404) {
         setLoginStatus(false);
-        setErro("Não foi encontrado nos sistemas!");
+        setErro("Dados não encontrados no sistema!");
       } else if (error.response.status === 401) {
         setLoginStatus(false);
         setErro("Requisição HTTPS não aceita.");

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 // Import de libs de react
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -63,7 +63,7 @@ class Menu extends React.Component {
     return (
       <>
         <div id="main-menu">
-          <Navbar pathname={"/admin/"} isAdmin={true}/>
+        <Navbar pathname={"/admin/"} isAdmin={true}/>
           <div className="container info">
             <div className="row">
               <div className="col list-menu-options">

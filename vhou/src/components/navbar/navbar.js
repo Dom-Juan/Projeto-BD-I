@@ -52,7 +52,7 @@ const Navbar = (props) => {
       <nav className="navbar navbar-expand-lg nav-menu noselect">
         <div className="container-fluid">
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Ative a navegação.">
-            <span className="menu-color"><img src={MenuImg}/></span>
+            <span className="menu-color"><img src={MenuImg} alt="" /></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarNavDropdown">
             <a className="navbar-brand text-center" href="#CACIC">Cacic</a>
@@ -97,40 +97,42 @@ const Navbar = (props) => {
       </nav>
     );
   } else {
-    <nav className="navbar navbar-expand-lg nav-menu noselect">
-      <div className="container-fluid">
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Ative a navegação.">
-          <span className="menu-color"><img src={MenuImg}/></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarNavDropdown">
-          <a className="navbar-brand text-center" href="#CACIC">Cacic</a>
-          <ul className="navbar-nav">
-            <li className="nav-item">
-              <Link type="button" className="nav-link" to={{ pathname: "/menu" }} onClick={handleGoToMenu}>Menu de Atividades</Link>
-            </li>
-            <li className="nav-item">
-              <Link type="button" className="nav-link" to={{ pathname: props.pathname }} replace onClick={handleLogout} data-bs-toggle="modal" data-bs-target="#msgModal">Logout</Link>
-            </li>
-          </ul>
+    return (
+      <nav className="navbar navbar-expand-lg nav-menu noselect">
+        <div className="container-fluid">
+          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Ative a navegação.">
+            <span className="menu-color"><img src={MenuImg} alt="" /></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarNavDropdown">
+            <a className="navbar-brand text-center" href="#CACIC">Cacic</a>
+            <ul className="navbar-nav">
+              <li className="nav-item">
+                <Link type="button" className="nav-link" to={{ pathname: "/menu" }} onClick={handleGoToMenu}>Menu de Atividades</Link>
+              </li>
+              <li className="nav-item">
+                <Link type="button" className="nav-link" to={{ pathname: props.pathname }} replace onClick={handleLogout} data-bs-toggle="modal" data-bs-target="#msgModal">Logout</Link>
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
-      <div className="modal fade" id="msgModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div className="modal-dialog">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title dark-text" id="exampleModalLabel">CACIC - V.H.O.U.</h5>
-            </div>
-            <div className="modal-body text-center dark-text">
-              Realizando logout...
-            </div>
-            <p className="dark-text text-center">Pode fechar esta janela.</p>
-            <div className="modal-footer">
-              <button type="button" className="btn btnSubmitClose" data-bs-dismiss="modal">Fechar</button>
+        <div className="modal fade" id="msgModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title dark-text" id="exampleModalLabel">CACIC - V.H.O.U.</h5>
+              </div>
+              <div className="modal-body text-center dark-text">
+                Realizando logout...
+              </div>
+              <p className="dark-text text-center">Pode fechar esta janela.</p>
+              <div className="modal-footer">
+                <button type="button" className="btn btnSubmitClose" data-bs-dismiss="modal">Fechar</button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+    );
   }
 }
 export default Navbar;

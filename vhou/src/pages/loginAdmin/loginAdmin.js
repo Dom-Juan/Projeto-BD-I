@@ -60,7 +60,7 @@ class LoginAdmin extends Component {
   render() {
     return (
       <>
-        <div id="main">
+        <div id="main-login">
           <div className="blur-section">a</div>
           <h1 className="text-center login-title noselect">Visualizador de horas online universitário Cacic</h1>
           <div id="contain" className="container">
