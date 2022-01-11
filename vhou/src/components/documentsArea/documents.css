@@ -26,6 +26,29 @@ body {
   margin: 0;
 }
 
+.btnDoc {
+  margin: 10px;
+}
+
+.docInput {
+  position: relative;
+  width: 30%;
+  min-width: 200px;
+  min-height: 35px;
+  border-radius: 2.5px;
+  padding: 0.8rem 0.8rem;
+  margin: 5px;
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: #414040d3;
+
+}
+
+.docInput:focus {
+  background: #b9b8b854 !important;
+  border-color: #3b6bb9;
+}
+
 @media only screen and (max-width: 920px) {
   #main-documents {
     height: 100%;
