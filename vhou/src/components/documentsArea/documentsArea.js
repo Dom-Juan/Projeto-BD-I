@@ -153,7 +153,7 @@ const DocumentsSent = (props) => {
                     }
 
                   </div>
-                  <div className='card-footer text-muted bg-warning noselect'>
+                  <div className={`${(element.status_atividade === 'pendente' ? "card-footer text-muted noselect bg-warning" : element.status_atividade === 'reprovado' ? "card-footer text-muted noselect bg-danger" : "card-footer text-muted noselect bg-success")}`}>
                     <p className="text-center" style={{ color: 'white' }}>{element.status_atividade}</p>
                   </div>
                 </div>
@@ -226,7 +226,7 @@ const DocumentsApproved = (props) => {
                 }
 
               </div>
-              <div className='card-footer text-muted bg-warning noselect'>
+              <div className={`${(element.status_atividade === 'pendente' ? "card-footer text-muted noselect bg-warning" : element.status_atividade === 'reprovado' ? "card-footer text-muted noselect bg-danger" : "card-footer text-muted noselect bg-success")}`}>
                 <p className="text-center" style={{ color: 'white' }}>{element.status_atividade}</p>
               </div>
             </div>
@@ -304,7 +304,7 @@ const DocumentsPending = (props) => {
                 }
 
               </div>
-              <div className='card-footer text-muted bg-warning noselect'>
+              <div className={`${(element.status_atividade === 'pendente' ? "card-footer text-muted noselect bg-warning" : element.status_atividade === 'reprovado' ? "card-footer text-muted noselect bg-danger" : "card-footer text-muted noselect bg-success")}`}>
                 <p className="text-center" style={{ color: 'white' }}>{element.status_atividade}</p>
               </div>
             </div>

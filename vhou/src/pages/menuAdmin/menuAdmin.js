@@ -22,10 +22,9 @@ import '../../misc/misc.css';
 
 const Menu = () => {
   // Variáveis para as ativiadades.
-  const [showActivitiesSent, setActSent] = useState();
-  const [showActivitiesApproved, setActApproved] = useState();
-  const [showPending, setActPending] = useState();
-  const [AllowSearch, setAllowSearch] = useState();
+  const [showActivitiesSent, setActSent] = useState(true);
+  const [showActivitiesApproved, setActApproved] = useState(false);
+  const [AllowSearch, setAllowSearch] = useState(false);
 
   // Texto monstrando a resposta para o usuário.
   const [text, setText] = useState("");
@@ -73,11 +72,9 @@ const Menu = () => {
     if (showActivitiesSent === false) {
       setActSent(true);
       setActApproved(false);
-      setActPending(false);
     } else {
       setActSent(false);
       setActApproved(false);
-      setActPending(false);
     }
   }
 
@@ -85,23 +82,9 @@ const Menu = () => {
     if (showActivitiesApproved === false) {
       setActSent(false);
       setActApproved(true);
-      setActPending(false);
     } else {
       setActSent(false);
       setActApproved(false);
-      setActPending(false);
-    }
-  }
-
-  function setShowPending() {
-    if (showPending === false) {
-      setActSent(false);
-      setActApproved(false);
-      setActPending(true);
-    } else {
-      setActSent(false);
-      setActApproved(false);
-      setActPending(false);
     }
   }
 
@@ -163,7 +146,6 @@ const Menu = () => {
                   <div className="opt-group">
                     <button className="list-menu-item list-group-item list-group-item-action noselect" id="act-approved" onClick={() => setShowActSent()} href="#list-act-approved" role="tab" aria-controls="atividades extras enviadas aprovadas">Atividades Extras Recebidas</button>
                     <button className="list-menu-item list-group-item list-group-item-action noselect" id="act-pending" onClick={() => setShowActAproved()} href="#list-act-pending" role="tab" aria-controls="atividades extras aprovadas">Atividades Extras Avaliadas</button>
-                    <button className="list-menu-item list-group-item list-group-item-action noselect" id="cord-contact" onClick={() => setShowPending()} href="#list-cord-pending" role="tab" aria-controls="atividades extras pendentes">Atividades Extras Pendentes</button>
                   </div>
                 </div>
               </div>
@@ -175,9 +157,6 @@ const Menu = () => {
                 </div>
                 <div className={`${(showActivitiesApproved === false) ? "nodisplay" : "showdisplay"}`}>
                   <DocumentsApproved vetor={documents} isCord={true}></DocumentsApproved>
-                </div>
-                <div className={`${(showPending === false) ? "nodisplay" : "showdisplay"}`}>
-                  <DocumentsPending vetor={documents} isCord={true}></DocumentsPending>
                 </div>
               </div>
             </div>
