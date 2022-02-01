@@ -143,8 +143,8 @@ const Menu = () => {
     } catch (error) {
       console.error(error);
     }
-
   }
+
   return (
     <>
       <div id="main-menu">
@@ -155,7 +155,7 @@ const Menu = () => {
               <div className="list-menu list-group" id="list-tab" role="tablist">
                 <button className="list-menu-item list-group-item list-group-item-action noselect" id="document" href="#list-document" data-bs-toggle="modal" data-bs-target="#modalAtividade" role="tab" aria-controls="enviar documento de uma atividade extra">Enviar Formulário de Atividade Extras</button>
                 <button className="list-menu-item list-group-item list-group-item-action noselect" id="act-approved" onClick={() => setShowActSent()} data-bs-toggle="list" href="#list-act-approved" role="tab" aria-controls="atividades extras enviadas aprovadas">Atividades Extras Enviadas</button>
-                <button className="list-menu-item list-group-item list-group-item-action noselect" id="act-pending" onClick={() => setShowActAproved()} data-bs-toggle="list" href="#list-act-pending" role="tab" aria-controls="atividades extras aprovadas">Atividades Extras Aprovadas</button>
+                <button className="list-menu-item list-group-item list-group-item-action noselect" id="act-pending" onClick={() => setShowActAproved()} data-bs-toggle="list" href="#list-act-pending" role="tab" aria-controls="atividades extras aprovadas">Atividades Extras Avaliadas</button>
                 <button className="list-menu-item list-group-item list-group-item-action noselect" id="cord-contact" onClick={() => setShowPending()} data-bs-toggle="list" href="#list-cord-pending" role="tab" aria-controls="atividades extras pendentes">Atividades Extras Pendentes</button>
               </div>
             </div>

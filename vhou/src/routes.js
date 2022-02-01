@@ -6,6 +6,7 @@ import Login from "./pages/login/loginPage";
 import LoginAdmin from "./pages/loginAdmin/loginAdmin";
 import Menu from "./pages/menu/menu";
 import EditUser from "./pages/editUser/editUser";
+import EditUserAdmin from "./pages/editUser/editUserAdmin";
 
 // Componentes Admin.
 import MenuAdmin from './pages/menuAdmin/menuAdmin';
@@ -60,8 +61,9 @@ export default class Routes extends React.Component {
             <PrivateRoute exact path="/cadastro/curso" component={CadCurso} />
             <PrivateRoute exact path="/cadastro/entidades-academicas" component={CadEntAcad} />
             <PrivateRoute exact path="/cadastro/horas-complementares" component={CadHoras} />
+            <PrivateRoute exact path="/perfil/usuario" component={EditUser} />
+            <PrivateRoute exact path="/perfil/admin" component={EditUserAdmin} />
             <PrivateRoute exact path="/" component={Menu} />
-            <PrivateRoute exact path="/edit" component={EditUser} />
             
             <Route path="*" component={() => <h1>Page not Found</h1>} />
           </Switch>

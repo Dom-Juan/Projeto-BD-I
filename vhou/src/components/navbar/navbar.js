@@ -21,7 +21,7 @@ const Navbar = (props) => {
     setTimeout(() => {
       setCount(count - 1);
       logout();
-      history.push("/login");
+      history.push("/admin");
     }, 6000);
   }
 
@@ -43,6 +43,10 @@ const Navbar = (props) => {
 
   const handleGoToCadHoraComp = (e) => {
     history.push("/cadastro/horas-complementares");
+  }
+
+  const handleGoToEdit = (e) => {
+    history.push("/perfil");
   }
 
   let history = useHistory();
@@ -71,6 +75,9 @@ const Navbar = (props) => {
               </li>
               <li className="nav-item">
                 <Link type="button" className="nav-link" to={{ pathname: "/cadastro/horas-complementares" }} onClick={handleGoToCadHoraComp}>Cadastrar Horas Complementares</Link>
+              </li>
+              <li className="nav-item">
+                <Link type="button" className="nav-link" to={{ pathname: "/perfil/Admin", isCoord: true }} onClick={handleGoToEdit}>Perfil</Link>
               </li>
               <li className="nav-item">
                 <Link type="button" className="nav-link" to={{ pathname: props.pathname }} replace onClick={handleLogout} data-bs-toggle="modal" data-bs-target="#msgModal">Logout</Link>
@@ -108,6 +115,9 @@ const Navbar = (props) => {
             <ul className="navbar-nav">
               <li className="nav-item">
                 <Link type="button" className="nav-link" to={{ pathname: "/menu" }} onClick={handleGoToMenu}>Menu de Atividades</Link>
+              </li>
+              <li className="nav-item">
+                <Link type="button" className="nav-link" to={{ pathname: "/perfil/usuario", isCoord: false }} onClick={handleGoToEdit}>Perfil</Link>
               </li>
               <li className="nav-item">
                 <Link type="button" className="nav-link" to={{ pathname: props.pathname }} replace onClick={handleLogout} data-bs-toggle="modal" data-bs-target="#msgModal">Logout</Link>

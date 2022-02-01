@@ -9,15 +9,15 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 import Navbar from '../../components/navbar/navbar';
 
 // Import de API
-import api from '../../pages/api';
-import { getUser } from '../../pages/auth';
+import api from '../api';
+import { getUser } from '../auth';
 
 // Import de CSS.
 import '../../misc/misc.css';
 import './editUser.css';
 import '../../misc/animations.css';
 
-const EditUser = (props) => {
+const EditUserAdmin = (props) => {
   // Variáveis de controle de mostrar opções para o usuário.
   const [showEditUser, setEditUser] = useState(true);
   const [showEditPSW, setEditPSW] = useState(false);
@@ -129,9 +129,9 @@ const EditUser = (props) => {
     dataParaOBanco["id_usuario"] = user.id_usuario;
     console.log(dataParaOBanco);
 
-    if (dataParaOBanco["ra_aluno"] !== '' && dataParaOBanco["nome_aluno"] !== '' && dataParaOBanco["nome_ent_acad_aluno"] !== '' && dataParaOBanco["ano_nascimento_aluno"] !== '') {
+    if (dataParaOBanco["nome_coord"] !== '' && dataParaOBanco["nome_ent_acad_coord"] !== '' && dataParaOBanco["data_como_coord"] !== '') {
       try {
-        api.put('/aluno/editar',
+        api.put('/coordenador/editar',
           dataParaOBanco
         ).then(response => {
           console.log(response);
@@ -187,7 +187,7 @@ const EditUser = (props) => {
   return (
     <div>
       <div id="main-edit">
-        <Navbar pathname={"/dashboard/"}></Navbar>
+        <Navbar pathname={"/admin/"} isAdmin={true}></Navbar>
         <div className="container">
           <div className='row'>
             <div className="col-md-4 list-menu-options">
@@ -201,68 +201,33 @@ const EditUser = (props) => {
           </div>
           <div className="row space">
             <div className={`${(showEditUser === false) ? "nodisplay" : "showdisplay animadoCimaParaBaixo"}`}>
-              {
-                (props.isCoord === true ?
-                  <form className="edit-contain" onSubmit={onSubmitChangeUserConfig} method="post" encType="multipart/form-data">
-                    <h2 id="edit-title" className='noselect'>Editar usuário - Coordenador</h2>
-                    <hr />
-                    <div className="wrapper container">
-                      <div className="row">
-                        <div className="col input-group mb-3">
-                          <label>Nome do coordenador</label>
-                          <input className="editInput" type="text" name="nome_coord"></input>
-                        </div>
-                        <div className="col input-group mb-3">
-                          <label>Nome da entidade academina</label>
-                          <input className="editInput" type="text" name="nome_ent_acad_coord"></input>
-                        </div>
-                      </div>
+              <form className="edit-contain" onSubmit={onSubmitChangeUserConfig} method="post" encType="multipart/form-data">
+                <h2 id="edit-title" className='noselect'>Editar usuário - Coordenador</h2>
+                <hr />
+                <div className="wrapper container">
+                  <div className="row">
+                    <div className="col input-group mb-3">
+                      <label>Nome do coordenador</label>
+                      <input className="editInput" type="text" name="nome_coord"></input>
                     </div>
-                    <div className='wrapper container'>
-                      <div className='row'>
-                        <div className="col input-group mb-3">
-                          <label>Data como coordenador</label>
-                          <input className="editInput" type="date" name="data_como_coord"></input>
-                        </div>
-                      </div>
+                    <div className="col input-group mb-3">
+                      <label>Nome da entidade academina</label>
+                      <input className="editInput" type="text" name="nome_ent_acad_coord"></input>
                     </div>
-                    <div className="btn-area">
-                      <button type="submit" className="btnSubmit">Salvar</button>
+                  </div>
+                </div>
+                <div className='wrapper container'>
+                  <div className='row'>
+                    <div className="col input-group mb-3">
+                      <label>Data como coordenador</label>
+                      <input className="editInput" type="date" name="data_como_coord"></input>
                     </div>
-                  </form>
-                  :
-                  <form className="edit-contain" onSubmit={onSubmitChangeUserConfig} method="post" encType="multipart/form-data">
-                    <h2 id="edit-title" className='noselect'>Editar usuário - Aluno</h2>
-                    <hr />
-                    <div className="wrapper container">
-                      <div className="row">
-                        <div className="col input-group mb-3">
-                          <label>RA Aluno</label>
-                          <input className="editInput" type="text" name="ra_aluno"></input>
-                        </div>
-                        <div className="col input-group mb-3">
-                          <label>Nome da entidade academina</label>
-                          <input className="editInput" type="text" name="nome_ent_acad_aluno"></input>
-                        </div>
-                      </div>
-                    </div>
-                    <div className='wrapper container'>
-                      <div className='row'>
-                        <div className="col input-group mb-3">
-                          <label>Nome</label>
-                          <input className="editInput" type="text" name="nome_aluno"></input>
-                        </div>
-                        <div className="col input-group mb-3">
-                          <label>Data de nascimento</label>
-                          <input className="editInput" type="date" name="ano_nascimento_aluno"></input>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="btn-area">
-                      <button type="submit" className="btnSubmit">Salvar</button>
-                    </div>
-                  </form>)
-              }
+                  </div>
+                </div>
+                <div className="btn-area">
+                  <button type="submit" className="btnSubmit" data-bs-toggle="modal" data-bs-target="#responseModal">Salvar</button>
+                </div>
+              </form>
             </div>
             <div className={`${(showEditPSW === false) ? "nodisplay" : "showdisplay animadoCimaParaBaixo"}`}>
               <form className="edit-contain" onSubmit={onSubmitResetPSW} method="post" encType="multipart/form-data">
@@ -331,4 +296,4 @@ const EditUser = (props) => {
   );
 }
 
-export default EditUser;
+export default EditUserAdmin;
