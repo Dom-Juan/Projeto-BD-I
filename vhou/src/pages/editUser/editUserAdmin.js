@@ -278,7 +278,7 @@ const EditUserAdmin = (props) => {
                   <div className="modal-header">
                     <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
-                  <div class="modal-body">
+                  <div className="modal-body">
                     <h5 className="modal-title text-center" id="responseModalLabel">{text}</h5>
                   </div>
                   <div className="modal-footer">

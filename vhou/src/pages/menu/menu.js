@@ -26,7 +26,6 @@ const Menu = () => {
   // Variáveis para as ativiadades.
   const [showActivitiesSent, setActSent] = useState(true);
   const [showActivitiesApproved, setActApproved] = useState(false);
-  const [showPending, setActPending] = useState(false);
 
   const [fileName, setFileName] = useState('Esperando um arquivo a ser enviado...');
 
@@ -75,6 +74,8 @@ const Menu = () => {
       setDocument(arrayDocumentosUsuario);
       setAtividades(arrayGraficoAtividade);
       setHoras(arrayGraficoHora);
+    }).catch(err => {
+      console.log(err);
     });
   }
 
@@ -82,11 +83,9 @@ const Menu = () => {
     if (showActivitiesSent === false) {
       setActSent(true);
       setActApproved(false);
-      setActPending(false);
     } else {
       setActSent(false);
       setActApproved(false);
-      setActPending(false);
     }
   }
 
@@ -94,23 +93,9 @@ const Menu = () => {
     if (showActivitiesApproved === false) {
       setActSent(false);
       setActApproved(true);
-      setActPending(false);
     } else {
       setActSent(false);
       setActApproved(false);
-      setActPending(false);
-    }
-  }
-
-  function setShowPending() {
-    if (showPending === false) {
-      setActSent(false);
-      setActApproved(false);
-      setActPending(true);
-    } else {
-      setActSent(false);
-      setActApproved(false);
-      setActPending(false);
     }
   }
 
@@ -125,9 +110,9 @@ const Menu = () => {
     let dataParaOBanco = {};
     let dataForm = new FormData(event.currentTarget);
     event.preventDefault();
-    console.log(fileName);
+
     for (let [key, value] of dataForm.entries()) {
-      console.log(key, value);
+
       dataParaOBanco[key] = value;
     }
     //console.log(dataParaOBanco);
@@ -137,11 +122,13 @@ const Menu = () => {
 
       // Colocando na rota que cria um usuário primeiro e depois um aluno.
       api.post(`/atividade/enviar`, dataForm).then(response => {
-        console.log(response);
+        console.log(response.status, response.msg);
+        getDocuments();
+        setText("Atividade enviada!!");
       });
-      setText("Atividade enviada!!");
     } catch (error) {
       console.error(error);
+      setText(error.msg);
     }
   }
 
@@ -156,7 +143,6 @@ const Menu = () => {
                 <button className="list-menu-item list-group-item list-group-item-action noselect" id="document" href="#list-document" data-bs-toggle="modal" data-bs-target="#modalAtividade" role="tab" aria-controls="enviar documento de uma atividade extra">Enviar Formulário de Atividade Extras</button>
                 <button className="list-menu-item list-group-item list-group-item-action noselect" id="act-approved" onClick={() => setShowActSent()} data-bs-toggle="list" href="#list-act-approved" role="tab" aria-controls="atividades extras enviadas aprovadas">Atividades Extras Enviadas</button>
                 <button className="list-menu-item list-group-item list-group-item-action noselect" id="act-pending" onClick={() => setShowActAproved()} data-bs-toggle="list" href="#list-act-pending" role="tab" aria-controls="atividades extras aprovadas">Atividades Extras Avaliadas</button>
-                <button className="list-menu-item list-group-item list-group-item-action noselect" id="cord-contact" onClick={() => setShowPending()} data-bs-toggle="list" href="#list-cord-pending" role="tab" aria-controls="atividades extras pendentes">Atividades Extras Pendentes</button>
               </div>
             </div>
             <div className="col-md-8 hours">
@@ -167,7 +153,7 @@ const Menu = () => {
           </div>
           <div className="row">
             <div className="col list-menu-content">
-              <div className="modal fade" id="modalAtividade" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div className="modal fade" id="modalAtividade" tabIndex="-1" aria-labelledby="modalAtividade" aria-hidden="true">
                 <div className="modal-dialog">
                   <form id="documents-form" onSubmit={onSubmit} method="post" encType="multipart/form-data">
                     <div className="modal-content">
@@ -248,9 +234,6 @@ const Menu = () => {
               </div>
               <div className={`${(showActivitiesApproved === false) ? "nodisplay" : "showdisplay"}`}>
                 <DocumentsApproved id_usuario={getUser()} vetor={documents} isCord={false}></DocumentsApproved>
-              </div>
-              <div className={`${(showPending === false) ? "nodisplay" : "showdisplay"}`}>
-                <DocumentsPending id_usuario={getUser()} vetor={documents} isCord={false}></DocumentsPending>
               </div>
             </div>
           </div>

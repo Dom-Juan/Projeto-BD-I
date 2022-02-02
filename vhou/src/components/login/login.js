@@ -64,6 +64,9 @@ const LoginComponent = (props) => {
             login(response.data.token, response.data.user);
             history.push("/menu");
           }
+        }).catch(error => {
+          console.log(error);
+          setErro(error.message);
         })
       } else if(location.pathname === '/admin') {
         await api.post("/session", {
@@ -77,6 +80,9 @@ const LoginComponent = (props) => {
             login(response.data.token, response.data.user);
             history.push("/menuAdmin");
           }
+        }).catch(error => {
+          console.log(error);
+          setErro(error.message);
         })
       } else {
         alert("Como você chegou aqui ?");
