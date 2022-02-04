@@ -120,7 +120,7 @@ const RegisterComponent = (props) => {
           tipo_usuario_aluno,
           tipo_grad_aluno
         }).then(response => {
-          console.log(response);
+          console.log(response.status, response.statusText);
         });
         setText("Cadastro realizado!!");
       } catch (error) {

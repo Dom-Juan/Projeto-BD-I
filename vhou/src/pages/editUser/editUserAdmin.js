@@ -75,7 +75,7 @@ const EditUserAdmin = (props) => {
           api.put('/user/trocar/senha',
             dataParaOBanco
           ).then(response => {
-            console.log(response);
+            console.log(response.status, response.statusText);
           }).catch(err => {
             console.log(err);
           });
@@ -104,7 +104,7 @@ const EditUserAdmin = (props) => {
         api.put('/user/trocar/email',
           dataParaOBanco
         ).then(response => {
-          console.log(response);
+          console.log(response.status, response.statusText);
         }).catch(err => {
           console.log(err);
         });
@@ -134,7 +134,7 @@ const EditUserAdmin = (props) => {
         api.put('/coordenador/editar',
           dataParaOBanco
         ).then(response => {
-          console.log(response);
+          console.log(response.status, response.statusText);
         }).catch(err => {
           console.log(err);
         });
