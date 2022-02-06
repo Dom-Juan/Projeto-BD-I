@@ -192,7 +192,6 @@ const EditUser = (props) => {
           <div className='row'>
             <div className="col-md-4 list-menu-options">
               <div className="list-menu list-group" id="list-tab" role="tablist">
-                <h3>Olá Pessoa</h3>
                 <button className="list-menu-item list-group-item list-group-item-action noselect" onClick={() => setShowEditUser()} data-bs-toggle="list" href="#profile" role="tab" aria-controls="Editar o perfil">Editar o perfil</button>
                 <button className="list-menu-item list-group-item list-group-item-action noselect" onClick={() => setShowEditPSW()} data-bs-toggle="list" href="#password" role="tab" aria-controls="Trocar a senha">Trocar a senha</button>
                 <button className="list-menu-item list-group-item list-group-item-action noselect" onClick={() => setShowEditName()} data-bs-toggle="list" href="#password" role="tab" aria-controls="Trocar a senha">Trocar o email ou nome de usuário</button>

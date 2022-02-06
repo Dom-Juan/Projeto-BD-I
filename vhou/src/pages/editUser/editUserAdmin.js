@@ -30,7 +30,7 @@ const EditUserAdmin = (props) => {
 
   useEffect(() => {
     getUserEdit();
-    getAluno();
+    getCoordenador();
   }, []);
 
   async function getUserEdit() {
@@ -46,14 +46,14 @@ const EditUserAdmin = (props) => {
     });
   }
 
-  async function getAluno() {
+  async function getCoordenador() {
     let id = getUser();
-    await api.get('/aluno/id', {
+    await api.get('/coordenador/id', {
       params: {
-        id_aluno_usuario: id,
+        id_coord_usuario: id,
       }
     }).then(response => {
-      setAluno(response.data);
+      setCoord(response.data);
     }).catch(err => {
       console.log(err);
     });

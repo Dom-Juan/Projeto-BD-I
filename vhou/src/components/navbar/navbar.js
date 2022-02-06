@@ -21,6 +21,14 @@ const Navbar = (props) => {
     setTimeout(() => {
       setCount(count - 1);
       logout();
+      history.push("/login");
+    }, 6000);
+  }
+
+  const handleLogoutAdmin = () => {
+    setTimeout(() => {
+      setCount(count - 1);
+      logout();
       history.push("/admin");
     }, 6000);
   }
@@ -65,22 +73,22 @@ const Navbar = (props) => {
                 <Link type="button" className="nav-link" to={{ pathname: "/menuAdmin" }} onClick={handleGoToMenu}>Menu de Atividades</Link>
               </li>
               <li className="nav-item">
-                <Link type="button" className="nav-link" to={{ pathname: "/cadastro/coordenadores" }} onClick={handleGoToCadCoord}>Cadastrar Coordenadores</Link>
+                <Link type="button" className="nav-link" to={{ pathname: "/cadastro/coordenadores" }} onClick={handleGoToCadCoord}>Cadastrar/Deletar Coordenadores</Link>
               </li>
               <li className="nav-item">
-                <Link type="button" className="nav-link" to={{ pathname: "/cadastro/curso" }} onClick={handleGoToCadCurso}>Cadastrar Curso</Link>
+                <Link type="button" className="nav-link" to={{ pathname: "/cadastro/curso" }} onClick={handleGoToCadCurso}>Área dos Curso</Link>
               </li>
               <li className="nav-item">
-                <Link type="button" className="nav-link" to={{ pathname: "/cadastro/entidades-academicas" }} onClick={handleGoToCadEntAcad}>Cadastrar Entidades acadêmicas</Link>
+                <Link type="button" className="nav-link" to={{ pathname: "/cadastro/entidades-academicas" }} onClick={handleGoToCadEntAcad}>Área das Entidades acadêmicas</Link>
               </li>
               <li className="nav-item">
-                <Link type="button" className="nav-link" to={{ pathname: "/cadastro/horas-complementares" }} onClick={handleGoToCadHoraComp}>Cadastrar Horas Complementares</Link>
+                <Link type="button" className="nav-link" to={{ pathname: "/cadastro/horas-complementares" }} onClick={handleGoToCadHoraComp}>Área das Horas Complementares</Link>
               </li>
               <li className="nav-item">
                 <Link type="button" className="nav-link" to={{ pathname: "/perfil/Admin", isCoord: true }} onClick={handleGoToEdit}>Perfil</Link>
               </li>
               <li className="nav-item">
-                <Link type="button" className="nav-link" to={{ pathname: props.pathname }} replace onClick={handleLogout} data-bs-toggle="modal" data-bs-target="#msgModal">Logout</Link>
+                <Link type="button" className="nav-link" to={{ pathname: props.pathname }} replace onClick={handleLogoutAdmin} data-bs-toggle="modal" data-bs-target="#msgModal">Logout</Link>
               </li>
             </ul>
           </div>

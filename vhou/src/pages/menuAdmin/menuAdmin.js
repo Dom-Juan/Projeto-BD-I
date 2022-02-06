@@ -24,10 +24,10 @@ const Menu = () => {
   // Variáveis para as ativiadades.
   const [showActivitiesSent, setActSent] = useState(true);
   const [showActivitiesApproved, setActApproved] = useState(false);
-  const [AllowSearch, setAllowSearch] = useState(false);
 
   // Texto monstrando a resposta para o usuário.
   const [text, setText] = useState("");
+  const [termoDeBusca, setTermoDeBusca] = useState("");
 
   // Variáveis para o fetch do banco de dados.
   const [cursosPegos, setCursosPegos] = useState([]);
@@ -88,40 +88,6 @@ const Menu = () => {
     }
   }
 
-  function setAllowSearchInput() {
-    setAllowSearch(true);
-  }
-
-  function allowSearch() {
-    var elementos = document.getElementsByName('radioPesquisar');
-    elementos.forEach(element => {
-      if(element.checked === true){
-        var x = document.getElementById("inputPesquisar");
-        x.disabled = false;
-        console.log(x);
-      }
-    });
-  }
-
-  const filter = (e) => {
-    const keyword = e.target.value;
-    let result = []
-    if(keyword !== '') {
-      documents.forEach((index, element) => {
-        if(keyword === element.ra_aluno_atividade) {
-          result.append(element);
-        }
-        if(keyword === element.nome_atividade) {
-          result.append(element);
-        }
-      });
-      setDocument(result);
-    } else {
-      getDocumentsAdmin();
-      result = documents;
-    }
-  }
-
     return (
       <>
         <div id="main-menu">
@@ -132,17 +98,13 @@ const Menu = () => {
                 <div className="list-menu list-group" id="list-tab" role="tablist">
                   <div className="row" style={{margin: '0 1px'}}>
                     <div className='col-lg-6 col-md-8 col-sm-8'>
-                      <input type="radio" name="radioPesquisar" id="pesquisarNome" onChange={() => setAllowSearchInput()}/>&nbsp;&nbsp;
                       <label >
-                        Nome
-                      </label>&nbsp;&nbsp;
-                      <input type="radio" name="radioPesquisar" id="pesquisarAno" onChange={() => setAllowSearchInput()}/>&nbsp;&nbsp;
-                      <label >
-                        Ano
+                        Filtrar:
                       </label>
                     </div>
                   </div>
-                  <input className="form-control" name="inputPesquisar" id="inputPesquisar" type="text" placeholder="Pesquisar.." style={{margin: '0 7px'}} disabled/>
+                  <br></br>
+                  <input className="form-control" name="inputPesquisar" id="inputPesquisar" type="text" placeholder="Pesquisar.." style={{margin: '0 7px'}} onChange={(event) => {setTermoDeBusca(event.target.value)}}/>
                   <div className="opt-group">
                     <button className="list-menu-item list-group-item list-group-item-action noselect" id="act-approved" onClick={() => setShowActSent()} href="#list-act-approved" role="tab" aria-controls="atividades extras enviadas aprovadas">Atividades Extras Recebidas</button>
                     <button className="list-menu-item list-group-item list-group-item-action noselect" id="act-pending" onClick={() => setShowActAproved()} href="#list-act-pending" role="tab" aria-controls="atividades extras aprovadas">Atividades Extras Avaliadas</button>
@@ -153,10 +115,10 @@ const Menu = () => {
             <div className="row">
               <div className="col list-menu-content">              
                 <div className={`${(showActivitiesSent === false) ? "nodisplay" : "showdisplay"}`}>
-                  <DocumentsSent vetor={documents} isCord={true}></DocumentsSent>
+                  <DocumentsSent vetor={documents} isCord={true} filter={termoDeBusca}></DocumentsSent>
                 </div>
                 <div className={`${(showActivitiesApproved === false) ? "nodisplay" : "showdisplay"}`}>
-                  <DocumentsApproved vetor={documents} isCord={true}></DocumentsApproved>
+                  <DocumentsApproved vetor={documents} isCord={true} filter={termoDeBusca}></DocumentsApproved>
                 </div>
               </div>
             </div>

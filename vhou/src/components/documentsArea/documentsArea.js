@@ -31,7 +31,7 @@ const DocumentsSent = (props) => {
   // Setando os componentes.
   const [vetor, setVetor] = useState([]);
   const componentRef = useRef();
-
+  const [filtro, setFiltro] = useState();
   // Variáveis de arquivos e informações.
   const [s, setAval] = useState();
   const [informacoes, setInformacoes] = useState({});
@@ -63,9 +63,9 @@ const DocumentsSent = (props) => {
   useEffect(() => {
     getCursos();
     getHorasComplementares();
-
+    setFiltro(props.filter);
     setVetor(props.vetor);
-  }, [props.vetor]);
+  }, [props.vetor, props.filter]);
 
   const setInformacoesForm = (event) => {
     event.persist();
@@ -176,7 +176,13 @@ const DocumentsSent = (props) => {
     <div id="main-document">
       <div className="container">
         {
-          vetor.map((element, index) => (
+          vetor.filter((element) => {
+            if(element === "")
+              return element;
+            else if(element.nome_atividade.toLowerCase().includes(filtro.toLowerCase())) {
+              return element;
+            }
+          }).map((element, index) => (
             <div key={element.id_atividade}>
               {/* Mostrar apenas atividades pendentes abaixo */}
               {(element.status_atividade === "pendente") ? (
@@ -381,19 +387,28 @@ const DocumentsSent = (props) => {
 
 const DocumentsApproved = (props) => {
   const [vetor, setVetor] = useState(props.vetor);
+  const [filtro, setFiltro] = useState("");
   const componentRef = useRef();
 
   const isCord = useState(props.isCord === true ? true : false);
 
+
   useEffect(() => {
     setVetor(props.vetor);
-  }, [props.vetor]);
+    setFiltro(props.filter);
+  }, [props.vetor, props.filter]);
 
   return (
     <div id="main-document">
       <div className="container">
         {
-          vetor.map((element, index) => (
+          vetor.filter((element) => {
+            if(element === "")
+              return element;
+            else if(element.nome_atividade.toLowerCase().includes(filtro.toLowerCase())) {
+              return element;
+            }
+          }).map((element, index) => (
             <div key={index}>
               {(element.status_atividade !== "pendente" ?
 
