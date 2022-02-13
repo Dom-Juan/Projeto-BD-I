@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 // Import de libs de react
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
-import FileSaver from 'file-saver';
+//import FileSaver from 'file-saver';
 import fileDownload from 'js-file-download';
 import { useForm } from "react-hook-form";
 
@@ -75,12 +75,6 @@ const DocumentsSent = (props) => {
     }));
     console.log(informacoes);
   };
-
-  const setAvaliacao = (event) => {
-    let s1 = event.target.value;
-    setAval(s1);
-    console.log(s);
-  }
 
   const AddID = (event, id_atividade) => {
     setId(id_atividade);

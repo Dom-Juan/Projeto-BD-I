@@ -33,6 +33,8 @@ const EditUser = (props) => {
     getAluno();
   }, []);
 
+  const formatYmd = date => date.toISOString().slice(0, 10);
+
   async function getUserEdit() {
     let id = getUser();
     await api.get('/user/id', {
@@ -53,7 +55,9 @@ const EditUser = (props) => {
         id_aluno_usuario: id,
       }
     }).then(response => {
-      setAluno(response.data);
+      let obj = response.data;
+      obj.ano_nascimento_aluno = formatYmd(new Date(obj.ano_nascimento_aluno));
+      setAluno(obj);
     }).catch(err => {
       console.log(err);
     });
@@ -109,6 +113,8 @@ const EditUser = (props) => {
           console.log(err);
         });
         setText("Email e nome trocado com sucesso!");
+        getAluno();
+        getUser();
       } catch (error) {
         console.error(error);
         setText(error.msg);
@@ -139,6 +145,8 @@ const EditUser = (props) => {
           console.log(err);
         });
         setText("Informações trocadas com sucesso trocadas com sucesso!");
+        getAluno();
+        getUser();
       } catch (error) {
         console.error(error);
         setText(error.msg);
@@ -192,10 +200,28 @@ const EditUser = (props) => {
           <div className='row'>
             <div className="col-md-4 list-menu-options">
               <div className="list-menu list-group" id="list-tab" role="tablist">
+                <h3>Olá { aluno === undefined ? "Usuário" : aluno.nome_aluno }</h3>
                 <button className="list-menu-item list-group-item list-group-item-action noselect" onClick={() => setShowEditUser()} data-bs-toggle="list" href="#profile" role="tab" aria-controls="Editar o perfil">Editar o perfil</button>
                 <button className="list-menu-item list-group-item list-group-item-action noselect" onClick={() => setShowEditPSW()} data-bs-toggle="list" href="#password" role="tab" aria-controls="Trocar a senha">Trocar a senha</button>
                 <button className="list-menu-item list-group-item list-group-item-action noselect" onClick={() => setShowEditName()} data-bs-toggle="list" href="#password" role="tab" aria-controls="Trocar a senha">Trocar o email ou nome de usuário</button>
               </div>
+            </div>
+            <div className="col-md-4 list-menu-options">
+              <ul className="list-group">
+                <label>Aluno</label>
+                <li className="list-group-item">RA: { aluno === undefined ? "" : aluno.ra_aluno }</li>
+                <li className="list-group-item">Nome: { aluno === undefined ? "" : aluno.nome_aluno }</li>
+                <li className="list-group-item">Data de nascimento: { aluno === undefined ? "" : aluno.ano_nascimento_aluno }</li>
+                <li className="list-group-item">Entidade Acadêmica: { aluno === undefined ? "" : aluno.nome_ent_acad_aluno }</li>
+              </ul>
+            </div>
+            <div className="col-md-4 list-menu-options">
+              <ul className="list-group">
+                <label>Usuário</label>
+                <li className="list-group-item">Email: { user === undefined ? "" : user.email_usuario }</li>
+                <li className="list-group-item">Usuário: { user === undefined ? "" : user.nome_usuario }</li>
+                <li className="list-group-item">Curso: { user === undefined ? "" : user.curso }</li>
+              </ul>
             </div>
           </div>
           <div className="row space">
@@ -258,7 +284,7 @@ const EditUser = (props) => {
                       </div>
                     </div>
                     <div className="btn-area">
-                      <button type="submit" className="btnSubmit">Salvar</button>
+                      <button type="submit" className="btnSubmit" data-bs-toggle="modal" data-bs-target="#responseModal">Salvar</button>
                     </div>
                   </form>)
               }

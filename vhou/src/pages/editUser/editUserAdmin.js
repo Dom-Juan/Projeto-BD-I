@@ -33,6 +33,8 @@ const EditUserAdmin = (props) => {
     getCoordenador();
   }, []);
 
+  const formatYmd = date => date.toISOString().slice(0, 10);
+
   async function getUserEdit() {
     let id = getUser();
     await api.get('/user/id', {
@@ -53,7 +55,9 @@ const EditUserAdmin = (props) => {
         id_coord_usuario: id,
       }
     }).then(response => {
-      setCoord(response.data);
+      let obj = response.data;
+      obj.data_como_coord = formatYmd(new Date(obj.data_como_coord));
+      setCoord(obj);
     }).catch(err => {
       console.log(err);
     });
@@ -109,6 +113,8 @@ const EditUserAdmin = (props) => {
           console.log(err);
         });
         setText("Email e nome trocado com sucesso!");
+        getUserEdit();
+        getCoordenador();
       } catch (error) {
         console.error(error);
         setText(error.msg);
@@ -139,6 +145,8 @@ const EditUserAdmin = (props) => {
           console.log(err);
         });
         setText("Informações trocadas com sucesso trocadas com sucesso!");
+        getUserEdit();
+        getCoordenador();
       } catch (error) {
         console.error(error);
         setText(error.msg);
@@ -192,11 +200,27 @@ const EditUserAdmin = (props) => {
           <div className='row'>
             <div className="col-md-4 list-menu-options">
               <div className="list-menu list-group" id="list-tab" role="tablist">
-                <h3>Olá Pessoa</h3>
+                <h3>Olá { coord === undefined ? "Usuário" : coord.nome_coord }</h3>
                 <button className="list-menu-item list-group-item list-group-item-action noselect" onClick={() => setShowEditUser()} data-bs-toggle="list" href="#profile" role="tab" aria-controls="Editar o perfil">Editar o perfil</button>
                 <button className="list-menu-item list-group-item list-group-item-action noselect" onClick={() => setShowEditPSW()} data-bs-toggle="list" href="#password" role="tab" aria-controls="Trocar a senha">Trocar a senha</button>
                 <button className="list-menu-item list-group-item list-group-item-action noselect" onClick={() => setShowEditName()} data-bs-toggle="list" href="#password" role="tab" aria-controls="Trocar a senha">Trocar o email ou nome de usuário</button>
               </div>
+            </div>
+            <div className="col-md-4 list-menu-options">
+              <ul className="list-group">
+                <label>Coordenador</label>
+                <li className="list-group-item">Nome: { coord === undefined ? "" : coord.nome_coord }</li>
+                <li className="list-group-item">Data de nascimento: { coord === undefined ? "" : coord.data_como_coord }</li>
+                <li className="list-group-item">Entidade Acadêmica: { coord === undefined ? "" : coord.nome_ent_acad_coord }</li>
+              </ul>
+            </div>
+            <div className="col-md-4 list-menu-options">
+              <ul className="list-group">
+                <label>Usuário</label>
+                <li className="list-group-item">Email: { user === undefined ? "" : user.email_usuario }</li>
+                <li className="list-group-item">Usuário: { user === undefined ? "" : user.nome_usuario }</li>
+                <li className="list-group-item">Curso: { user === undefined ? "" : user.curso }</li>
+              </ul>
             </div>
           </div>
           <div className="row space">
